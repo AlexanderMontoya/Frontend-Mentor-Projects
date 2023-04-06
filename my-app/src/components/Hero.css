@@ -1,0 +1,86 @@
+.hero{
+    width: 45%;
+    height: 650px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.hero__blob{
+    width: 100%;
+    height: 80%;
+    border-radius: 0px 0px 0px 70px;
+    background-color: hsl(207, 33%, 95%);
+}
+
+.hero__content{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.hero__illustration{
+    height: 70%;
+    width: auto;
+    position: absolute;
+    bottom: 0;
+    z-index: 100;
+}
+
+@media only screen and (max-width: 1245px) {
+    .hero{
+        width: 50%;
+        height: 500px;
+    }
+    .hero__illustration{
+        height: 50%;
+    }
+}
+@media only screen and (max-width: 769px) {
+    .hero{
+        width: 100%;
+        height: 100vh;
+    }
+
+    .hero__content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .hero__blob{
+        width: 50%;
+        height: 90%;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .hero__illustration{
+        width: 90%;
+        height: auto;
+        bottom: auto;
+    }
+}
+
+@media only screen and (max-width: 426px){
+    .hero{
+        height: 60vh;
+        overflow: hidden;
+    }
+    .hero__blob{
+        height: 100%;
+    }
+    .hero__illustration{
+        width: calc(100% + 50px);
+        bottom: 50px;
+        right: -55px;
+    }
+}
+
+@media only screen and (max-width: 376px){
+    .hero__illustration{
+        width: calc(100% + 100px);
+        right: -105px;
+    }
+}
