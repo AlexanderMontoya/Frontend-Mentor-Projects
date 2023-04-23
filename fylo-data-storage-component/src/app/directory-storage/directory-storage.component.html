@@ -1,0 +1,28 @@
+<div class="component__hidden">
+    <h2 class="component__title">Folders</h2>
+    <button class="component__btn" (click)="cerrar()">Cerrar</button>
+    <div class="component__table">
+        <table class="table" *ngIf="folders?.length">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Nombre</th>
+                    <th>Size</th>
+                    <th></th>
+                </tr>    
+            </thead>
+            <tbody>
+                <tr *ngFor="let directory of folders; let i=index">
+                    <td class="component__type"><img src="../../assets/images/icon-folder.svg" alt="" width="10" *ngIf="directory.type=='directory'"><img src="../../assets/images/icon-document.svg" alt="" width="10" *ngIf="directory.type=='file'"></td>
+                    <td><p class="component__name">{{directory.name}}</p></td>
+                    <td class="component__size">{{directory.size}}</td>
+                    <td class="component__action"><button class="component__btnView" (click)="verFolder(i)" *ngIf="directory.type=='directory'">Ver Carpeta</button></td>
+                </tr>    
+            </tbody>
+            
+        </table>
+    </div>
+    <div class="message" *ngIf="!folders?.length">
+        Aún no a subido carpetas
+    </div>
+</div>

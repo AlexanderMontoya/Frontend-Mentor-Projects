@@ -1,0 +1,64 @@
+<div class="app" *ngIf="upload==false && showFiles==false && showDirectories==false">
+    <div class="app__content">
+        <img src="../assets/images/logo.svg" alt="" width="100" class="app__logo">
+        <div class="app__btns">
+            <button class="app__btn" title="New File" (click)="showFiles=!showFiles">
+                <img src="../assets/images/icon-document.svg" alt="" width="100">
+            </button>
+            <button class="app__btn" title="New Folder" (click)="showDirectories=!showDirectories">
+                <img src="../assets/images/icon-folder.svg" alt="" width="100">
+            </button>
+            <button class="app__btn" title="Upload" (click)="upload=!upload">
+                <img src="../assets/images/icon-upload.svg" alt="" width="100">
+            </button>
+        </div>
+    </div>
+    <div class="app__storage">
+        <span class="app__text">
+            You've used <b>{{useGB}} GB</b> of your storage
+        </span>
+        <div class="app__line">
+            <div class="app__use" [style.width.%]="useGB / 10"><div class="app__circle"></div></div>
+        </div>
+        <div class="app__details">
+            <span><b>0 GB</b></span>
+            <span><b>{{capacidad}} GB</b></span>
+        </div>
+        <div class="app__left">
+            <span class="left">{{capacidad - useGB}}</span>GB LEFT
+        </div>
+    </div>
+</div>
+<!-- Componentes Ocultos -->
+<!-- Upload -->
+<div class="upload component__hidden" *ngIf="upload" >
+    <div class="upload__content drop-zone" (drop)="onDrop($event)" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)">
+        <h2>Drag your files here</h2>
+        <span>or</span>
+        <button class="upload__btn" (click)="file.click()">Select your files</button>
+        <input type="file" name="" id="upload__input" hidden multiple #file (change)="func($event)">
+    </div>
+    <button class="component__btn" (click)="upload=!upload">Cerrar</button>
+    <div class="files">
+        <ul>
+            <li *ngFor="let item of archivosActuales; let i=index">
+                <div class="item">
+                    <img src="../assets/images/icon-document.svg" class="item__type" alt="" width="10" *ngIf="item.type=='file'">
+                    <img src="../assets/images/icon-folder.svg" class="item__type" alt="" width="10" *ngIf="item.type=='directory'">
+                    <div class="item__name">{{item.name}}</div>
+                    <div class="item__size" *ngIf="item.type=='file'"><b>{{item.size}}</b></div>
+                    <div class="anim" style="animation: anim_item 1.5s;">
+                    </div>
+                </div>
+                <!-- <div class="item" *ngIf="item.type=='directory'">
+                    <img src="../assets/images/icon-folder.svg" class="item__type" alt="" width="10">
+                    <div class="item__name">{{item.name}}</div>
+                </div> -->
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- Files -->
+<app-file-storage *ngIf="showFiles" [(showFiles)]="showFiles"></app-file-storage>
+<!-- Directories -->
+<app-directory-storage *ngIf="showDirectories" [(showDirectories)]="showDirectories"></app-directory-storage>

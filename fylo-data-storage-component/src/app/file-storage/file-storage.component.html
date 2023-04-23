@@ -1,0 +1,21 @@
+<div class="component__hidden">
+    <h2 class="component__title">Files</h2>
+    <div class="component__table">
+        <table class="table" *ngIf="files?.length">
+            <tr>
+                <th></th>
+                <th>Nombre</th>
+                <th>Size</th>
+            </tr>
+            <tr *ngFor="let file of files; let i=index">
+                <td class="component__type"><img src="../../assets/images/icon-document.svg" alt="" width="10"></td>
+                <td><p class="component__name">{{file.name}}</p></td>
+                <td class="component__size">{{file.size}}</td>
+            </tr>
+        </table>
+        <button class="component__btn" (click)="cerrar()">Cerrar</button> 
+        <div class="message" *ngIf="!files?.length">
+            Aún no a subido archivos
+        </div>    
+    </div>
+</div>

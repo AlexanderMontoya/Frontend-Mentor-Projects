@@ -1,0 +1,20 @@
+@mixin flex($justify:center, $direction:row){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: center;
+}
+
+@mixin overflow($lines:1){
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+@mixin btns($radius:0px){
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: $radius;
+}
