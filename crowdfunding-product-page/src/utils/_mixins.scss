@@ -1,0 +1,10 @@
+@import './variables';
+@mixin btn(){
+    border: none;
+    outline: none;
+    background-color: $color_moderate_cyan;
+    transition: background 1s;
+    &:hover{
+        background-color: $color_dark_cyan;
+    }
+}

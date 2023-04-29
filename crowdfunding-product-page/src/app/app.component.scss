@@ -1,0 +1,246 @@
+@use '../utils/mixins';
+@import '../utils/variables';
+
+.main{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 100px;
+}
+
+.component{
+    width: 65%;
+    border-radius: 5px;
+    margin: auto;
+    padding: 50px;
+    box-shadow: 0px 0px 1px 1px rgb(226, 226, 226);
+    @media only screen and (max-width: 860px) {
+        &{
+            width: 80%;
+        }
+    }
+    @media only screen and (max-width: 728px) {
+        &{
+            padding: 40px 25px;
+        }
+    }
+}
+
+.head{
+    position: relative;
+    margin-top: calc($altura_hero / 2 - 80px);
+    text-align: center;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    &__logo_master{
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        top: -30px;
+    }
+    &__texts{
+        margin: 20px 0px;
+        font-size: 16px;
+        &_title{
+            margin-bottom: 20px;
+            @media only screen and (max-width:728px) {
+                font-size: 20px;
+            }
+        }
+        p{
+            color: $color_dark_gray;
+        }
+    }
+    &__btns{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        .head__btn{
+            cursor: pointer;
+            padding: 10px 0px;
+            width: 180px;
+            height: 50px;
+            font-size: 16px;
+            color: white;
+            @include mixins.btn();
+            border-radius: 100px;
+            font-weight: 700;
+            
+            &.bookmark{
+                background-color: rgb(231, 228, 228);
+                color: $color_dark_gray;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-right: 30px;
+                img{
+                    width: 50px;
+                    height: 50px;
+                }
+                @media only screen and (max-width: 728px) {
+                    &{
+                        width: 50px;
+                        overflow: hidden;
+                    }
+                }
+            }
+        }
+    }
+    @media only screen and (max-width: 860px) {
+        &{
+            margin-top: calc($altura_hero / 2 - 150px);
+        }
+    }
+    @media only screen and (max-width: 728px) {
+        &{
+            margin-top: calc($altura_hero / 2 - 50px);
+        }
+    }
+    @media only screen and (max-width: 320px) {
+        &{
+            margin-top: calc($altura_hero / 2 - 80px);
+        }
+    }
+}
+
+.counter{
+    &__details{
+        display: flex;
+        gap: 40px;
+        margin-bottom: 40px;
+        @media only screen and (max-width:728px){
+            &{
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    }
+    &__count{
+        strong{
+            display: block;
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        p{
+            font-size: 16px;
+            color: $color_dark_gray;
+        }
+        &--div{
+            padding: 0px 40px;
+            padding-right: 60px;
+            border-right: 2px solid rgb(220, 220, 220);
+            border-left: 2px solid rgb(220, 220, 220);
+            @media only screen and (max-width:728px){
+                &{
+                    padding: 40px 0px;
+                    border: none;
+                    border-top: 2px solid rgb(220, 220, 220);
+                    border-bottom: 2px solid rgb(220, 220, 220);
+                }
+            }
+        }
+    }
+    
+
+    &__barra{
+        width: 100%;
+        height: 15px;
+        border-radius: 15px;
+        background-color: rgb(238, 238, 238);
+        &_div{
+            width: 80%;
+            height: 100%;
+            border-radius: 15px;
+            background-color: $color_moderate_cyan;
+        }
+    }
+}
+
+.project{
+    .texts{
+        &__title{
+            margin-bottom: 30px;
+        }
+        &__paragraph{
+            color: $color_dark_gray;
+            font-weight: 500;
+        }
+    }
+    &__details{
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        margin-top: 50px;
+        .detail{
+            width: 100%;
+            border-radius: 5px;
+            margin: auto;
+            padding: 40px;
+            box-shadow: 0px 0px 1px 1px rgb(198, 196, 196);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            &__head{
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                .detail__pledge{
+                    color: $color_moderate_cyan;
+                    text-decoration: none;
+                    font-weight: 500;
+                }
+                @media only screen and (max-width:728px){
+                    &{
+                        flex-direction: column;
+                        gap: 10px;
+                    }
+                }
+            }
+            &__paragraph{
+                margin: 20px 0px;
+                color: $color_dark_gray;
+            }
+            &__count{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                strong{
+                    font-size: 30px;
+                }
+                p{
+                    color: $color_dark_gray;
+                }
+                @media only screen and (max-width:728px){
+                    &{
+                        width: 100%;
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+            &__btn{
+                width: 150px;
+                padding: 15px 0px;
+                @include mixins.btn();
+                border-radius: 30px;
+                color: white;
+                font-size: 14px;
+                font-weight: 700;
+                cursor: pointer;
+                &.disabled{
+                    background-color: $color_dark_gray;
+                }
+            }
+            &.disabled{
+                opacity: .5;
+            }
+            @media only screen and (max-width:728px){
+                &{
+                    padding: 25px;
+                }
+            }
+        }
+    }
+}
