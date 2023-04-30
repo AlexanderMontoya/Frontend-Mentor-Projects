@@ -1,105 +1,116 @@
-<header class="header">
-  <nav class="nav">
-    <a href="#" class="nav__logo"><img src="./assets/images/logo.svg" alt="Logo"></a>
-    <ul class="nav__list">
-      <li><a href="#" class="nav__item">About</a></li>
-      <li><a href="#" class="nav__item">Discover</a></li>
-      <li><a href="#" class="nav__item">Get Started</a></li>
-    </ul>
-    <button class="btn__responsive" (click)="nav_responsive=!nav_responsive">
-      <img src="./assets/images/icon-hamburger.svg" alt="" *ngIf="nav_responsive==false">
-      <img src="./assets/images/icon-close-menu.svg" alt="" *ngIf="nav_responsive">
-    </button>
-  </nav>
-  <nav class="nav--responsive" *ngIf="nav_responsive">
-    <ul class="nav__list--responsive">
-      <li><a href="#" class="nav__item">About</a></li>
-      <li><a href="#" class="nav__item nav__item--center">Discover</a></li>
-      <li><a href="#" class="nav__item">Get Started</a></li>
-    </ul>
-  </nav>
-  <div class="hero"></div>
-</header>
-<main class="main">
-  <div class="head component">
-    <img src="./assets/images/logo-mastercraft.svg" alt="" class="head__logo_master">
-    <div class="head__texts">
-      <h1 class="head__texts_title">Mastercraft Bamboo Monitor Riser</h1>
-      <p>A beautiful & handcrafted monitor stand to reduce neck and eye strain.</p>
-    </div>
-    <div class="head__btns">
-      <button class="head__btn">Back this project</button>
-      <button class="head__btn bookmark"><img src="./assets/images/icon-bookmark.svg" alt="bookmark" width="30"> Bookmark</button>
-    </div>
-  </div>
-  <div class="counter component">
-    <div class="counter__details">
-      <div class="counter__count">
-        <strong>$89,914</strong>
-        <p>of $100,000 backed</p>
+<div class="app" [class.scrollOff]="scrollOff">
+  <header class="header">
+    <nav class="nav">
+      <a href="#" class="nav__logo"><img src="./assets/images/logo.svg" alt="Logo"></a>
+      <ul class="nav__list">
+        <li><a href="#" class="nav__item">About</a></li>
+        <li><a href="#" class="nav__item">Discover</a></li>
+        <li><a href="#" class="nav__item">Get Started</a></li>
+      </ul>
+      <button class="btn__responsive" (click)="nav_responsive=!nav_responsive">
+        <img src="./assets/images/icon-hamburger.svg" alt="" *ngIf="nav_responsive==false">
+        <img src="./assets/images/icon-close-menu.svg" alt="" *ngIf="nav_responsive">
+      </button>
+    </nav>
+    <nav class="nav--responsive" *ngIf="nav_responsive">
+      <ul class="nav__list--responsive">
+        <li><a href="#" class="nav__item">About</a></li>
+        <li><a href="#" class="nav__item nav__item--center">Discover</a></li>
+        <li><a href="#" class="nav__item">Get Started</a></li>
+      </ul>
+    </nav>
+    <div class="hero"></div>
+  </header>
+  <main class="main">
+    <div class="head component">
+      <img src="./assets/images/logo-mastercraft.svg" alt="" class="head__logo_master">
+      <div class="head__texts">
+        <h1 class="head__texts_title">Mastercraft Bamboo Monitor Riser</h1>
+        <p>A beautiful & handcrafted monitor stand to reduce neck and eye strain.</p>
       </div>
-      <div class="counter__count counter__count--div">
-        <strong>5,007</strong>
-        <p>total backers</p>
-      </div>
-      <div class="counter__count">
-        <strong>56</strong>
-        <p>days left</p>
+      <div class="head__btns">
+        <button class="head__btn" (click)="scrollOff=!scrollOff">Back this project</button>
+        <button class="head__btn bookmark"><img src="./assets/images/icon-bookmark.svg" alt="bookmark" width="30"> Bookmark</button>
       </div>
     </div>
-    <div class="counter__barra">
-      <div class="counter__barra_div"></div>
-    </div>
-  </div>
-  <div class="project component">
-    <div class="project__texts texts">
-      <h2 class="texts__title">About this project</h2>
-      <p class="texts__paragraph">The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your screen to a more comfortable viewing height. Placing your monitor at eye level has the potential to improve your posture and make you more comfortable while at work, helping you stay focused on the task at hand.</p><br>
-      <p class="texts__paragraph">Featuring artisan craftsmanship, the simplicity of design creates extra desk space below your computer to allow notepads, pens, and USB sticks to be stored under the stand.</p>  
-    </div>
-    <div class="project__details">
-      <div class="detail">
-        <div class="detail__head">
-          <h3 class="detail__title">Bamboo Stand</h3>
-          <a href="#" class="detail__pledge">Pledge $25 or more</a>
+    <div class="counter component">
+      <div class="counter__details">
+        <div class="counter__count">
+          <strong>${{reunido}}</strong>
+          <p>of ${{total}} backed</p>
         </div>
-        <p class="detail__paragraph">
-          You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.
-        </p>
-        <div class="detail__count">
-          <strong>101</strong>
-          <p>left</p>
+        <div class="counter__count counter__count--div">
+          <strong>{{ backers }}</strong>
+          <p>total backers</p>
         </div>
-        <button class="detail__btn">Select Reward</button>
+        <div class="counter__count">
+          <strong>56</strong>
+          <p>days left</p>
+        </div>
       </div>
-      <div class="detail">
-        <div class="detail__head">
-          <h3 class="detail__title">Black Edition Stand</h3>
-          <a href="#" class="detail__pledge">Pledge $75 or more</a>
-        </div>
-        <p class="detail__paragraph">
-          You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included.
-        </p>
-        <div class="detail__count">
-          <strong>64</strong>
-          <p>left</p>
-        </div>
-        <button class="detail__btn">Select Reward</button>
-      </div>
-      <div class="detail disabled">
-        <div class="detail__head">
-          <h3 class="detail__title">Mahogany Special Edition</h3>
-          <a href="#" class="detail__pledge">Pledge $200 or more</a>
-        </div>
-        <p class="detail__paragraph">
-          You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. Shipping is included.
-        </p>
-        <div class="detail__count">
-          <strong>0</strong>
-          <p>left</p>
-        </div>
-        <button class="detail__btn disabled" disabled>Out of stock</button>
+      <div class="counter__barra">
+        <div class="counter__barra_div" [style.width.%]="reunido / 1000"></div>
       </div>
     </div>
-  </div>
-</main>
+    <div class="project component">
+      <div class="project__texts texts">
+        <h2 class="texts__title">About this project</h2>
+        <p class="texts__paragraph">The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your screen to a more comfortable viewing height. Placing your monitor at eye level has the potential to improve your posture and make you more comfortable while at work, helping you stay focused on the task at hand.</p><br>
+        <p class="texts__paragraph">Featuring artisan craftsmanship, the simplicity of design creates extra desk space below your computer to allow notepads, pens, and USB sticks to be stored under the stand.</p>  
+      </div>
+      <div class="project__rewards">
+        <div class="reward" *ngFor="let reward of rewards; let i = index">
+          <div class="reward__content" [class.disabled]="reward.stock==0" *ngIf="i!==0">
+            <div class="reward__head">
+              <h3 class="reward__title">{{ reward.title }}</h3>
+              <p href="#" class="reward__pledge">Pledge ${{ reward.pledge }} or more</p>
+            </div>
+            <p class="reward__paragraph">
+              {{ reward.description }}
+            </p>
+            <div class="reward__count">
+              <strong>{{ reward.stock }}</strong>
+              <p>left</p>
+            </div>
+            <button class="reward__btn" (click)="selectReward(i)" *ngIf="reward.stock!=0">Select Reward</button>
+            <button class="reward__btn disabled" *ngIf="reward.stock==0">Out of stock</button>
+          </div>
+        </div>
+        <!-- .detail.disabled es para que no este disponible -->
+      </div>
+    </div>
+    <div class="project__back"  *ngIf="scrollOff">
+      <form (ngSubmit)="enviarPledge()" class="form__back form" #formPledge="ngForm">
+        <button class="btn__cerrar" (click)="cerrar($event)"><img src="./assets/images/icon-close-modal.svg" alt=""></button>
+        <h2 class="title">Back this project</h2>
+        <p class="paragraph">Want to support us in bringing Mastergraft Bamboo Monitor Riser out in the world?</p>
+
+        <div class="form__component" *ngFor="let reward of rewards; let i=index">
+          <div class="div__1" [class.disabled]="reward.stock==0 && reward.isReward">
+            <input type="radio" name="reward" id="{{reward.id}}" (change)="mostrar(i)" [checked]="reward.isChecked" 
+            [disabled]="reward.stock==0 && reward.isReward">
+            <div class="form__texts">
+              <label for="{{reward.id}}" class="form__label">{{ reward.title }} <span class="pledge" *ngIf="reward.isReward">Pledge ${{ reward.pledge }} or more</span></label>
+              <p class="cant" *ngIf="reward.isReward"><strong>{{ reward.stock }}</strong> left</p>
+              <p class="form__paragraph">
+                {{ reward.description }}
+              </p> 
+            </div>
+          </div>
+          <div class="div__2" *ngIf="reward.stock!=0 && reward.isChecked">
+            <p>Enter your place</p>
+            <div class="content__btn">
+              <div class="pledge">
+                $ <input type="text" value="{{ reward.pledge }}" class="input" [(ngModel)]="persona.aporte" required name="aporte">
+              </div>
+              <button type="submit" class="btn">Continue</button>
+            </div>
+          </div>
+        </div>
+
+      </form>
+      
+    </div>
+  </main>  
+</div>
+
