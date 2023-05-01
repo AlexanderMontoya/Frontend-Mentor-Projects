@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Arial';
+}
+
+.header{
+    width: 100%;
+    text-align: center;
+    padding: 100px 0px;
+    background-color: cornflowerblue;
+    color: white;
+}
+
+/*Main*/
+.main{
+    width: 80%;
+    min-height: 100vh;
+    padding: 50px 0px;
+    margin: auto;
+}
+
+
+
+/*Footer*/
+.footer{
+    width: 100%;
+}
+.contacts .contacts__nav{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.contacts__item{
+    list-style: none;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.contacts__item a{
+    text-decoration: none;
+    color: white;
+}
+
+.contacts__item--mail{
+    background-color: rgb(212, 16, 16);
+}
+
+.contacts__item--linkedin{
+    background-color: rgb(10, 99, 188);
+}
+
+.contacts__item--github{
+    background-color: rgb(39, 38, 38);
+}
+
+.developer{
+    width: 100%;
+    padding: 10px 0px;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
