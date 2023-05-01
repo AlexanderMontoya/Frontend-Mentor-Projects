@@ -36,20 +36,20 @@
     <div class="counter component">
       <div class="counter__details">
         <div class="counter__count">
-          <strong>${{reunido}}</strong>
-          <p>of ${{total}} backed</p>
+          <strong>${{project.collected.toLocaleString()}}</strong>
+          <p>of ${{project.total.toLocaleString()}} backed</p>
         </div>
         <div class="counter__count counter__count--div">
-          <strong>{{ backers }}</strong>
+          <strong>{{ project.backers.toLocaleString() }}</strong>
           <p>total backers</p>
         </div>
         <div class="counter__count">
-          <strong>56</strong>
+          <strong>{{project.days_left}}</strong>
           <p>days left</p>
         </div>
       </div>
       <div class="counter__barra">
-        <div class="counter__barra_div" [style.width.%]="reunido / 1000"></div>
+        <div class="counter__barra_div" [style.width.%]="project.collected / 1000"></div>
       </div>
     </div>
     <div class="project component">
@@ -80,7 +80,7 @@
       </div>
     </div>
     <div class="project__back"  *ngIf="scrollOff">
-      <form (ngSubmit)="enviarPledge()" class="form__back form" #formPledge="ngForm">
+      <form (ngSubmit)="enviarPledge()" class="form__back form" #formPledge="ngForm" *ngIf="!persona.aporto">
         <button class="btn__cerrar" (click)="cerrar($event)"><img src="./assets/images/icon-close-modal.svg" alt=""></button>
         <h2 class="title">Back this project</h2>
         <p class="paragraph">Want to support us in bringing Mastergraft Bamboo Monitor Riser out in the world?</p>
@@ -101,15 +101,21 @@
             <p>Enter your place</p>
             <div class="content__btn">
               <div class="pledge">
-                $ <input type="text" value="{{ reward.pledge }}" class="input" [(ngModel)]="persona.aporte" required name="aporte">
+                $ <input type="text" class="input" [(ngModel)]="persona.total" required name="aporte" (keypress)="validateFormat($event)">
               </div>
-              <button type="submit" class="btn">Continue</button>
+              <button type="submit" class="btn" [disabled]="formPledge.invalid">Continue</button>
             </div>
           </div>
         </div>
 
       </form>
       
+      <div class="project__thanks" *ngIf="persona.aporto">
+        <img src="./assets/images/icon-check.svg" alt="">
+        <h4>Thanks for your support!</h4>
+        <p>Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get an email once our campaign is completed. Got it!</p>
+        <button (click)="gotIt()">Got it</button>
+      </div>
     </div>
   </main>  
 </div>

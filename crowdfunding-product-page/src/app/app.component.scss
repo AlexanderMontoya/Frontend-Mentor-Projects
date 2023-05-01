@@ -155,6 +155,7 @@
 
     &__barra{
         width: 100%;
+        overflow: hidden;
         height: 15px;
         border-radius: 15px;
         background-color: rgb(238, 238, 238);
@@ -384,6 +385,48 @@
             &{
                 width: 80%;
             }
+        }
+    }
+
+    .project__thanks{
+        padding: 30px;
+        background-color: white;
+        border-radius: 10px;
+        width: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        animation: scale_thanks 1s;
+        img{
+            margin-bottom: 30px;
+        }
+        h4{
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        p{
+            color: $color_dark_gray;
+            margin-bottom: 20px;
+        }
+        button{
+            font-size: 16px;
+            width: 100px;
+            color: white;
+            padding: 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            @include mixins.btn();
+        }
+        @keyframes scale_thanks {
+            0%{
+                transform: scale(50%);
+            }
+        }
+        @media only screen and (max-width:580px){
+            width: 90%;
         }
     }
 }

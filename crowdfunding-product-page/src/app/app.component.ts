@@ -8,13 +8,18 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'crowdfunding-product-page';
   nav_responsive:boolean=false;
-  scrollOff:boolean=true;
-  backers:number=5007;
-  reunido:number=89914;
-  total:number=100000;
+  scrollOff:boolean=false;
+  project={
+    days_left: 56,
+    backers: 5007,
+    collected: 89914,
+    total: 100000
+  }
   persona={
     aporte: 0,
     reward: '',
+    aporto: false,
+    total:0
   }
   rewards=[
     {
@@ -22,8 +27,8 @@ export class AppComponent {
       title: 'Pledge with no reward',
       description: `Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.`,
       isReward: false,
-      stock: 0,
-      pledge: 0
+      pledge: 1,
+      isChecked: false,
     },
     {
       id: 'bambooReward',
@@ -64,6 +69,7 @@ export class AppComponent {
     this.rewards[i].isChecked=true;
     this.persona.reward = this.rewards[i].id;
     this.persona.aporte=this.rewards[i].pledge;
+    this.persona.total=this.persona.aporte;
   }
   selectReward(i:number){
     this.scrollOff=!this.scrollOff;
@@ -71,13 +77,44 @@ export class AppComponent {
   }
 
   enviarPledge(){
-    this.reunido= this.reunido + (this.persona.aporte * 1);
+    if(this.persona.total >= this.persona.aporte){
+      this.project.collected= this.project.collected + (this.persona.total * 1);
+      this.project.backers+=1;
+      this.rewards.forEach(element => {
+        if(element.stock){
+          if(element.id==this.persona.reward){
+            element.stock = element.stock - 1 ;
+          }  
+        }
+      });
+      this.persona.aporto=true;  
+    }
+  }
+
+  gotIt(){
     this.rewards.forEach(element => {
       element.isChecked=false;
     });
-    console.log(this.persona.reward)
+    this.persona.reward='';
     this.persona.aporte=0;
-    this.backers+=1;
+    this.persona.aporto=false;
     this.scrollOff=!this.scrollOff;
   }
+
+  validateFormat(event:any) {
+    let key;
+    if (event.type === 'paste') {
+      key = event.clipboardData.getData('text/plain');
+    } else {
+      key = event.keyCode;
+      key = String.fromCharCode(key);
+    }
+    const regex = /[0-9]|\./;
+     if (!regex.test(key)) {
+      event.returnValue = false;
+       if (event.preventDefault) {
+        event.preventDefault();
+       }
+     }
+    }
 }
