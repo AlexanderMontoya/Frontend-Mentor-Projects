@@ -1,0 +1,90 @@
+@use '../../utils/mixins';
+@import '../../utils/variables';
+.project{
+    .texts{
+        &__title{
+            margin-bottom: 30px;
+        }
+        &__paragraph{
+            color: $color_dark_gray;
+            font-weight: 500;
+        }
+    }
+    &__rewards{
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        margin-top: 50px;
+        .reward{
+            .reward__content{
+                width: 100%;
+                border-radius: 5px;
+                margin: auto;
+                padding: 40px;
+                box-shadow: 0px 0px 1px 1px rgb(198, 196, 196);
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                &.disabled{
+                    opacity: .5;
+                }
+                @media only screen and (max-width:728px){
+                    &{
+                        padding: 25px;
+                    }
+                }   
+            }
+            &__head{
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                .reward__pledge{
+                    color: $color_moderate_cyan;
+                    text-decoration: none;
+                    font-weight: 500;
+                }
+                @media only screen and (max-width:728px){
+                    &{
+                        flex-direction: column;
+                        gap: 10px;
+                    }
+                }
+            }
+            &__paragraph{
+                margin: 20px 0px;
+                color: $color_dark_gray;
+            }
+            &__count{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                strong{
+                    font-size: 30px;
+                }
+                p{
+                    color: $color_dark_gray;
+                }
+                @media only screen and (max-width:728px){
+                    &{
+                        width: 100%;
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+            &__btn{
+                width: 150px;
+                padding: 15px 0px;
+                @include mixins.btn();
+                border-radius: 30px;
+                color: white;
+                font-size: 14px;
+                font-weight: 700;
+                cursor: pointer;
+                &.disabled{
+                    cursor: auto;
+                    background-color: $color_dark_gray;
+                }
+            }
+        }
+    }
+}

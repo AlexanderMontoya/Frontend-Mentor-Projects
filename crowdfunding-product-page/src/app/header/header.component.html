@@ -1,0 +1,24 @@
+<header class="header">
+    <nav>
+      <div class="nav">
+        <a href="#" class="nav__logo"><img src="./assets/images/logo.svg" alt="Logo"></a>
+        <ul class="nav__list">
+          <li><a href="#" class="nav__item">About</a></li>
+          <li><a href="#" class="nav__item">Discover</a></li>
+          <li><a href="#" class="nav__item">Get Started</a></li>
+        </ul>
+        <button class="btn__responsive" (click)="nav_responsive=!nav_responsive">
+          <img src="./assets/images/icon-hamburger.svg" alt="" *ngIf="nav_responsive==false">
+          <img src="./assets/images/icon-close-menu.svg" alt="" *ngIf="nav_responsive">
+        </button>
+      </div>
+      <div class="nav--responsive" *ngIf="nav_responsive">
+        <ul class="nav__list--responsive">
+          <li><a href="#" class="nav__item">About</a></li>
+          <li><a href="#" class="nav__item nav__item--center">Discover</a></li>
+          <li><a href="#" class="nav__item">Get Started</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="hero"></div>
+  </header>

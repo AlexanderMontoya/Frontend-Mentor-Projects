@@ -1,0 +1,27 @@
+<div class="project component">
+    <div class="project__texts texts">
+      <h2 class="texts__title">About this project</h2>
+      <p class="texts__paragraph">The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your screen to a more comfortable viewing height. Placing your monitor at eye level has the potential to improve your posture and make you more comfortable while at work, helping you stay focused on the task at hand.</p><br>
+      <p class="texts__paragraph">Featuring artisan craftsmanship, the simplicity of design creates extra desk space below your computer to allow notepads, pens, and USB sticks to be stored under the stand.</p>  
+    </div>
+    <div class="project__rewards">
+      <div class="reward" *ngFor="let reward of useService.rewards; let i = index">
+        <div class="reward__content" [class.disabled]="reward.stock==0" *ngIf="i!==0">
+          <div class="reward__head">
+            <h3 class="reward__title">{{ reward.title }}</h3>
+            <p href="#" class="reward__pledge">Pledge ${{ reward.pledge }} or more</p>
+          </div>
+          <p class="reward__paragraph">
+            {{ reward.description }}
+          </p>
+          <div class="reward__count">
+            <strong>{{ reward.stock }}</strong>
+            <p>left</p>
+          </div>
+          <button class="reward__btn" (click)="selectReward(i)" *ngIf="reward.stock!=0">Select Reward</button>
+          <button class="reward__btn disabled" *ngIf="reward.stock==0">Out of stock</button>
+        </div>
+      </div>
+      <!-- .detail.disabled es para que no este disponible -->
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="project__back"  *ngIf="useService.scrollOff">
+    <form (ngSubmit)="enviarPledge()" class="form__back form" #formPledge="ngForm" *ngIf="!useService.user.aporto">
+      <button class="btn__cerrar" (click)="cerrar($event)"><img src="./assets/images/icon-close-modal.svg" alt=""></button>
+      <h2 class="title">Back this project</h2>
+      <p class="paragraph">Want to support us in bringing Mastergraft Bamboo Monitor Riser out in the world?</p>
+
+      <div class="form__component" *ngFor="let reward of useService.rewards; let i=index">
+        <div class="div__1" [class.disabled]="reward.stock==0 && reward.isReward">
+          <input type="radio" name="reward" id="{{reward.id}}" (change)="mostrar(i)" [checked]="reward.isChecked" 
+          [disabled]="reward.stock==0 && reward.isReward">
+          <div class="form__texts">
+            <label for="{{reward.id}}" class="form__label">{{ reward.title }} <span class="pledge" *ngIf="reward.isReward">Pledge ${{ reward.pledge }} or more</span></label>
+            <p class="cant" *ngIf="reward.isReward"><strong>{{ reward.stock }}</strong> left</p>
+            <p class="form__paragraph">
+              {{ reward.description }}
+            </p> 
+          </div>
+        </div>
+        <div class="div__2" *ngIf="reward.stock!=0 && reward.isChecked">
+          <p>Enter your place</p>
+          <div class="content__btn">
+            <div class="pledge">
+              $ <input type="text" class="input" [(ngModel)]="useService.user.total" required name="aporte" (keypress)="validateFormat($event)">
+            </div>
+            <button type="submit" class="btn" [disabled]="formPledge.invalid">Continue</button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+    
+    <div class="project__thanks" *ngIf="useService.user.aporto">
+      <img src="./assets/images/icon-check.svg" alt="">
+      <h4>Thanks for your support!</h4>
+      <p>Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get an email once our campaign is completed. Got it!</p>
+      <button (click)="gotIt()">Got it</button>
+    </div>
+</div>

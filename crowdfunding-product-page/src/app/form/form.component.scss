@@ -1,0 +1,176 @@
+@use '../../utils/mixins';
+@import '../../utils/variables';
+
+.project__back{
+    width: 100%;
+    min-height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.419);
+    top: 0;
+    left: 0;
+    z-index: 7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0px;
+    .form{
+        width: 80%;
+        padding: 40px;
+        border-radius: 10px;
+        background-color: white;
+        width: 65%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        position: relative;
+        .paragraph{
+            color: $color_dark_gray;
+            margin: 10px 0px;
+        }
+        &__component{
+            box-shadow: 0px 0px 1px 1px rgb(207, 207, 207);
+            border-radius: 5px;
+            .div__1{
+                padding: 20px;
+                display: flex;
+                gap: 20px;
+                align-items: first baseline;
+                &.disabled{
+                    opacity: .5;
+                }
+            }
+            .div__2{
+                border-top: 1px solid rgb(207, 207, 207);
+                padding: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                color: $color_dark_gray;
+                .content__btn{
+                    display: flex;
+                    gap: 10px;
+                    .pledge{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        width: 80px;
+                        padding: 10px;
+                        border-radius: 20px;
+                        border: 1px solid $color_dark_cyan;
+                        .input{
+                            border: none;
+                            outline: none;
+                            padding: 0px;
+                            width: 20px;
+                            height: 100%;
+                            font-size: 16px;
+                            font-weight: 700;
+                            background-color: transparent;
+                        }
+                    }
+                    .btn{
+                        font-size: 14px;
+                        width: 100px;
+                        @include mixins.btn();
+                        padding: 10px;
+                        border-radius: 20px;
+                        color: white;
+                        font-weight: 700;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        &__texts{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            color: $color_dark_gray;
+            font-size: 16px;
+        }
+        &__label{
+            color: $color_black;
+            font-weight: 700;
+            cursor: pointer;
+            transition: color 1s;
+            .pledge{
+                color: $color_moderate_cyan;
+                margin-left: 10px;
+                font-weight: 500;
+            }
+            &:hover{
+                color: $color_moderate_cyan;
+            }
+        }
+        .cant{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            strong{
+                color: $color_black;
+                font-size: 20px;
+            }
+        }
+        .btn__cerrar{
+            border: none;
+            outline: none;
+            cursor: pointer;
+            width: 15px;
+            height: 15px;
+            background-color: transparent;
+            position: absolute;
+            top: 30px;
+            right: 30px;
+        }
+        @media only screen and (max-width: 860px) {
+            &{
+                width: 80%;
+            }
+        }
+    }
+
+    .project__thanks{
+        padding: 30px;
+        background-color: white;
+        border-radius: 10px;
+        width: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        animation: scale_thanks 1s;
+        img{
+            margin-bottom: 30px;
+        }
+        h4{
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        p{
+            color: $color_dark_gray;
+            margin-bottom: 20px;
+        }
+        button{
+            font-size: 16px;
+            width: 100px;
+            color: white;
+            padding: 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            @include mixins.btn();
+        }
+        @keyframes scale_thanks {
+            0%{
+                transform: scale(50%);
+            }
+        }
+        @media only screen and (max-width:580px){
+            width: 90%;
+        }
+    }
+}

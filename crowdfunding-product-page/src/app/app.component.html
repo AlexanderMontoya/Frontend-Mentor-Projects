@@ -1,26 +1,5 @@
-<div class="app" [class.scrollOff]="scrollOff">
-  <header class="header">
-    <nav class="nav">
-      <a href="#" class="nav__logo"><img src="./assets/images/logo.svg" alt="Logo"></a>
-      <ul class="nav__list">
-        <li><a href="#" class="nav__item">About</a></li>
-        <li><a href="#" class="nav__item">Discover</a></li>
-        <li><a href="#" class="nav__item">Get Started</a></li>
-      </ul>
-      <button class="btn__responsive" (click)="nav_responsive=!nav_responsive">
-        <img src="./assets/images/icon-hamburger.svg" alt="" *ngIf="nav_responsive==false">
-        <img src="./assets/images/icon-close-menu.svg" alt="" *ngIf="nav_responsive">
-      </button>
-    </nav>
-    <nav class="nav--responsive" *ngIf="nav_responsive">
-      <ul class="nav__list--responsive">
-        <li><a href="#" class="nav__item">About</a></li>
-        <li><a href="#" class="nav__item nav__item--center">Discover</a></li>
-        <li><a href="#" class="nav__item">Get Started</a></li>
-      </ul>
-    </nav>
-    <div class="hero"></div>
-  </header>
+<div class="app" [class.scrollOff]="useService.scrollOff">
+  <app-header></app-header> 
   <main class="main">
     <div class="head component">
       <img src="./assets/images/logo-mastercraft.svg" alt="" class="head__logo_master">
@@ -29,94 +8,31 @@
         <p>A beautiful & handcrafted monitor stand to reduce neck and eye strain.</p>
       </div>
       <div class="head__btns">
-        <button class="head__btn" (click)="scrollOff=!scrollOff">Back this project</button>
+        <button class="head__btn" (click)="useService.scrollOff=!useService.scrollOff">Back this project</button>
         <button class="head__btn bookmark"><img src="./assets/images/icon-bookmark.svg" alt="bookmark" width="30"> Bookmark</button>
       </div>
     </div>
     <div class="counter component">
       <div class="counter__details">
         <div class="counter__count">
-          <strong>${{project.collected.toLocaleString()}}</strong>
-          <p>of ${{project.total.toLocaleString()}} backed</p>
+          <strong>${{useService.project.collected.toLocaleString()}}</strong>
+          <p>of ${{useService.project.total.toLocaleString()}} backed</p>
         </div>
         <div class="counter__count counter__count--div">
-          <strong>{{ project.backers.toLocaleString() }}</strong>
+          <strong>{{ useService.project.backers.toLocaleString() }}</strong>
           <p>total backers</p>
         </div>
         <div class="counter__count">
-          <strong>{{project.days_left}}</strong>
+          <strong>{{ useService.project.days_left}}</strong>
           <p>days left</p>
         </div>
       </div>
       <div class="counter__barra">
-        <div class="counter__barra_div" [style.width.%]="project.collected / 1000"></div>
+        <div class="counter__barra_div" [style.width.%]="useService.project.collected / 1000"></div>
       </div>
     </div>
-    <div class="project component">
-      <div class="project__texts texts">
-        <h2 class="texts__title">About this project</h2>
-        <p class="texts__paragraph">The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your screen to a more comfortable viewing height. Placing your monitor at eye level has the potential to improve your posture and make you more comfortable while at work, helping you stay focused on the task at hand.</p><br>
-        <p class="texts__paragraph">Featuring artisan craftsmanship, the simplicity of design creates extra desk space below your computer to allow notepads, pens, and USB sticks to be stored under the stand.</p>  
-      </div>
-      <div class="project__rewards">
-        <div class="reward" *ngFor="let reward of rewards; let i = index">
-          <div class="reward__content" [class.disabled]="reward.stock==0" *ngIf="i!==0">
-            <div class="reward__head">
-              <h3 class="reward__title">{{ reward.title }}</h3>
-              <p href="#" class="reward__pledge">Pledge ${{ reward.pledge }} or more</p>
-            </div>
-            <p class="reward__paragraph">
-              {{ reward.description }}
-            </p>
-            <div class="reward__count">
-              <strong>{{ reward.stock }}</strong>
-              <p>left</p>
-            </div>
-            <button class="reward__btn" (click)="selectReward(i)" *ngIf="reward.stock!=0">Select Reward</button>
-            <button class="reward__btn disabled" *ngIf="reward.stock==0">Out of stock</button>
-          </div>
-        </div>
-        <!-- .detail.disabled es para que no este disponible -->
-      </div>
-    </div>
-    <div class="project__back"  *ngIf="scrollOff">
-      <form (ngSubmit)="enviarPledge()" class="form__back form" #formPledge="ngForm" *ngIf="!persona.aporto">
-        <button class="btn__cerrar" (click)="cerrar($event)"><img src="./assets/images/icon-close-modal.svg" alt=""></button>
-        <h2 class="title">Back this project</h2>
-        <p class="paragraph">Want to support us in bringing Mastergraft Bamboo Monitor Riser out in the world?</p>
-
-        <div class="form__component" *ngFor="let reward of rewards; let i=index">
-          <div class="div__1" [class.disabled]="reward.stock==0 && reward.isReward">
-            <input type="radio" name="reward" id="{{reward.id}}" (change)="mostrar(i)" [checked]="reward.isChecked" 
-            [disabled]="reward.stock==0 && reward.isReward">
-            <div class="form__texts">
-              <label for="{{reward.id}}" class="form__label">{{ reward.title }} <span class="pledge" *ngIf="reward.isReward">Pledge ${{ reward.pledge }} or more</span></label>
-              <p class="cant" *ngIf="reward.isReward"><strong>{{ reward.stock }}</strong> left</p>
-              <p class="form__paragraph">
-                {{ reward.description }}
-              </p> 
-            </div>
-          </div>
-          <div class="div__2" *ngIf="reward.stock!=0 && reward.isChecked">
-            <p>Enter your place</p>
-            <div class="content__btn">
-              <div class="pledge">
-                $ <input type="text" class="input" [(ngModel)]="persona.total" required name="aporte" (keypress)="validateFormat($event)">
-              </div>
-              <button type="submit" class="btn" [disabled]="formPledge.invalid">Continue</button>
-            </div>
-          </div>
-        </div>
-
-      </form>
-      
-      <div class="project__thanks" *ngIf="persona.aporto">
-        <img src="./assets/images/icon-check.svg" alt="">
-        <h4>Thanks for your support!</h4>
-        <p>Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get an email once our campaign is completed. Got it!</p>
-        <button (click)="gotIt()">Got it</button>
-      </div>
-    </div>
+    <app-about-project></app-about-project>
+    <app-form></app-form>
   </main>  
 </div>
 
