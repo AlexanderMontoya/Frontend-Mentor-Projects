@@ -1,10 +1,17 @@
-@import './variables';
 @mixin btn(){
     border: none;
     outline: none;
-    background-color: $color_orange;
-    transition: background 1s;
-    &:hover{
-        background-color: $color_dark_cyan;
-    }
+    cursor: pointer;
+}
+
+@mixin centrar(){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin redondear($tamaño){
+    width: $tamaño;
+    height: $tamaño;
+    border-radius: 50%;
 }

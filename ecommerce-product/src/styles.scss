@@ -1,7 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+@import './utils/variables';
+
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+:root {
+    --color-orange: #{$color-orange};
+    --color-bg-price: #{$color-bg-price};
+    --color-dark-blue: #{color-dark-blue};
+    --color-paragraph: #{$color-paragraph};
+    --color-links: #{$color-links};
+    --color-price-desc: #{$color-price-desc};
+    --color-bg-select: #{$color-bg-select};
+  }
+
+body{
+    font-family: $font_family;
 }

@@ -1,0 +1,53 @@
+@import './../../../utils/mixins';
+.navbar{
+    width: 80%;
+    height: 120px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid var(--color-price-desc);
+    .nav{
+        display: flex;
+        height: 100%;
+        gap: 50px;
+        &__button{
+            display: none;
+            .btn{
+                @include btn();
+                background-color: transparent;
+                height: 18px;
+                img{
+                    height: 100%;
+                }
+            }
+            @media only screen and (max-width:880px) {
+                @include centrar();
+            }
+        }
+        @media only screen and (max-width:880px) {
+            gap: 20px;
+        }
+    }
+
+    .components{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        .user__component{
+            @include redondear(50px);
+            border: 2px solid var(--color-orange);
+            img{
+                width: 100%;
+            }
+        }
+    }
+
+    .nav__link{
+        @include centrar();
+    }
+
+    @media only screen and (max-width:375px) {
+        width: 90%;
+    }
+}
