@@ -1,0 +1,15 @@
+<div class="content__images">
+    <div class="images">
+        <img src="assets/images/product/{{image}}" alt="" width="200" class="img img--general">
+        <div class="images__navegation">
+            <button (click)="previous()" class="btn"><img src="assets/images/icon-previous.svg" alt=""></button>
+            <button (click)="next()" class="btn"><img src="assets/images/icon-next.svg" alt=""></button>
+        </div>
+    </div>
+    <div class="list__images">
+        <div class="list__item" *ngFor="let data of product.images_thumbnail" [class.select]="data.select"  (click)="cambiar(data.id)">
+            <img src="assets/images/product/thumbnail/{{data.url}}" class="img" alt="" width="100">
+        </div>
+    </div>
+    
+</div>

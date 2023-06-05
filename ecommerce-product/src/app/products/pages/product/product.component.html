@@ -1,0 +1,40 @@
+<div class="content">
+    <app-images-product [product]="product"></app-images-product>
+
+    <div class="content__product">
+        <div class="product">
+            <span class="product__company">
+                SNEAKER COMPANY
+            </span>
+            <h2 class="product__name">{{ product.name }}</h2>
+            <p class="product__description">{{ product.description }}</p>
+            <div class="product__price">
+                <span class="price">
+                    <b>${{ product.price - (product.price * product.discount)/100 }}</b>
+                    <p class="product__discount" *ngIf="product.discount > 0">
+                        {{ product.discount }}%
+                    </p>
+                </span>
+                <span class="product__price--desc" *ngIf="product.discount > 0">${{product.price}}</span>
+            </div>
+            <form (ngSubmit)="addToCart()" class="form">
+                <input type="hidden" name="id_product" id="id_product" value="{{product.id}}">
+                <div class="form__count">
+                    <button type="button" class="count__item" (click)="minus()">
+                        <img src="assets/images/icon-minus.svg" alt="">
+                    </button>
+                    <span class="count">{{ count }}</span>
+                    <button type="button" class="count__item" (click)="plus()">
+                        <img src="assets/images/icon-plus.svg" alt="">
+                    </button>    
+                </div>
+                
+                <button type="submit" class="btn">
+                    <img src="assets/images/icon-cart_white.svg" alt="">
+                    Add to cart
+                </button>
+            </form>
+        </div>
+        
+    </div>
+</div>
