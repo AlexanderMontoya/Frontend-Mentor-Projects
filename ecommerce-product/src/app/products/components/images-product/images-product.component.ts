@@ -1,10 +1,8 @@
 import { Component, Input } from '@angular/core';
 
-interface thumbail{
-  id: number,
-  url: string,
-  select: boolean
-};
+import { Product } from 'src/app/Product';
+import { Thumbnail } from 'src/app/Product';
+
 
 @Component({
   selector: 'app-images-product',
@@ -13,37 +11,38 @@ interface thumbail{
 })
 
 export class ImagesProductComponent {
-  @Input() product?:any;
+  @Input() product?:Product;
 
-  image = "";
   select:number = 0;
-  images_thumbnail:thumbail[] = [];
+  image:string = '';
+  
+  thumbnails: Thumbnail[] = [];
 
   ngOnInit(){
-    this.image = this.product.images[this.select].url;
-    this.images_thumbnail = this.product.images_thumbnail;
+    this.image = this.product?.images.list_images[this.select].url ?? '';
+    this.thumbnails = this.product?.images.thumbnails ?? [];
   }
 
   previous(){
     if(this.select>0){
       this.select -= 1;
-      this.image = this.product.images[this.select].url;
+      this.image = this.product?.images.list_images[this.select].url ?? '';
     }
   }
 
   next(){
-    if(this.select < this.images_thumbnail.length - 1){
+    if(this.select < this.thumbnails.length - 1){
       this.select += 1;
-      this.image = this.product.images[this.select].url;
+      this.image = this.product?.images.list_images[this.select].url ?? '';
     }
   }
 
   cambiar(num:number){
-    this.image = this.product.images[num].url;
-    this.images_thumbnail.forEach(element => {
+    this.image = this.product?.images.list_images[num].url ?? '';
+    this.thumbnails.forEach(element => {
       element.select = false;
     });
-    this.product.images_thumbnail[num].select = true;
+    this.thumbnails[num].select = true;
     this.select = num;
   }
 }

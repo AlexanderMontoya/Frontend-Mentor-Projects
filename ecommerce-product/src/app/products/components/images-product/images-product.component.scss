@@ -14,14 +14,17 @@
         &__navegation{
             width: 100%;
             position: absolute;
-            display: flex;
-            justify-content: space-between;
             padding: 0px 20px;
+            display: none;
             .btn{
                 @include btn();
                 @include centrar();
                 @include redondear(40px);
                 background-color: white;
+            }
+            @media only screen and (max-width: 430px){
+                display: flex;
+                justify-content: space-between;
             }
         }
         @media only screen and (max-width: 430px){
