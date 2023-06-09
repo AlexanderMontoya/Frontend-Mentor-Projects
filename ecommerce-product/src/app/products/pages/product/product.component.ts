@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 
 import { Product } from 'src/app/Product';
+import { ProductsService } from 'src/app/products.service';
+import { CartService } from 'src/app/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -14,66 +16,37 @@ export class ProductComponent {
   count:number = 0;
 
   product:Product={
-    id: 0 ,
-    name: 'Fall Limited Edition Sneakers',
-    description:`These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.`,
-    price: 250,
-    discount: 20,
-    stock: 5,
+    id: '' ,
+    name: '',
+    description: '',
+    price: 0,
+    discount: 0,
+    stock: 0,
     images: {
-      list_images:[
-        {
-          id: 0,
-          url: 'image-product-1.jpg',
-        },
-        {
-          id: 1,
-          url: 'image-product-2.jpg',
-        },
-        {
-          id: 2,
-          url: 'image-product-3.jpg',
-        },
-        {
-          id: 3,
-          url: 'image-product-4.jpg',
-        }
-      ],
-      thumbnails: [
-        {
-          id: 0,
-          url: 'image-product-1-thumbnail.jpg',
-          select: true
-        },
-        {
-          id: 1,
-          url: 'image-product-2-thumbnail.jpg',
-          select: false
-        },
-        {
-          id: 2,
-          url: 'image-product-3-thumbnail.jpg',
-          select: false
-        },
-        {
-          id: 3,
-          url: 'image-product-4-thumbnail.jpg',
-          select: false
-        }
-      ]
+      list_images:[],
+      thumbnails: []
     }
   }
 
-  
-
   constructor(private activRoute : ActivatedRoute,
-    private router:Router){
+              private router:Router, 
+              public productsService:ProductsService,
+              public cartService:CartService){
     
   }
 
   ngOnInit(){
     this.activRoute.params.subscribe(params=>{
       this.name_product=params['name_product'];
+      this.productsService.product = [];
+      this.productsService.consultProduct(this.name_product);
+      if(this.productsService.product.length>0){
+        /*Verifica que hay elementos */
+        this.product = this.productsService.product[0];
+      }else{
+        /*Redirecciona */
+        this.router.navigate(['/productos']);
+      }
     })
   }
 
@@ -90,7 +63,9 @@ export class ProductComponent {
   }
 
   addToCart(){
-    console.log("Se agrego al carrito, el producto: "+ this.product.name);
-    console.log(this.product);
+    if(this.count>0){
+      console.log("Se agrego al carrito, el producto: "+ this.product.name);
+      this.cartService.addToCart(this.product, this.count);
+    }
   }
 }

@@ -3,18 +3,15 @@
         <div class="nav__button">
             <button class="btn" (click)="open()"><img src="assets/images/icon-menu.svg" alt=""></button>
         </div>
-        <a href="#" class="nav__link nav__link--logo" >
+        <a routerLink="productos" class="nav__link nav__link--logo" >
             <img src="assets/images/logo.svg" alt="image logo">
         </a>
         <app-links [(navbar)]="navbar"></app-links>
     </nav>
     <div class="components">
-        <div class="cart__component">
-            <img src="assets/images/icon-cart.svg" alt="">
-        </div>
+        <app-cart></app-cart>
         <div class="user__component">
             <img src="assets/images/image-avatar.png" alt="">
         </div>
     </div>
-    
 </header>

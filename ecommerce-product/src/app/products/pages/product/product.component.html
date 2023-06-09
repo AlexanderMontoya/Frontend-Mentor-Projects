@@ -1,5 +1,5 @@
 <div class="content">
-    <app-images-product [product]="product"></app-images-product>
+    <app-images-product></app-images-product>
 
     <div class="content__product">
         <div class="product">
@@ -10,12 +10,12 @@
             <p class="product__description">{{ product.description }}</p>
             <div class="product__price">
                 <span class="price">
-                    <b>${{ product.price - (product.price * product.discount)/100 }}</b>
+                    <b>${{ (product.price - (product.price * product.discount)/100).toFixed(2) }}</b>
                     <p class="product__discount" *ngIf="product.discount > 0">
                         {{ product.discount }}%
                     </p>
                 </span>
-                <span class="product__price--desc" *ngIf="product.discount > 0">${{product.price}}</span>
+                <span class="product__price--desc" *ngIf="product.discount > 0">${{product.price.toFixed(2)}}</span>
             </div>
             <form (ngSubmit)="addToCart()" class="form">
                 <input type="hidden" name="id_product" id="id_product" value="{{product.id}}">

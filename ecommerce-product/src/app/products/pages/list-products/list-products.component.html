@@ -1,1 +1,5 @@
-<p>list-products works!</p>
+<div class="product__ga" *ngFor="let product of products">
+    <img src="assets/images/product/{{product.id}}/{{product.images.list_images[0].url}}" alt="" width="200">
+    <strong>{{ product.name }}</strong>
+    <a routerLink="{{ product.id }}">Ver Producto</a>
+</div>
