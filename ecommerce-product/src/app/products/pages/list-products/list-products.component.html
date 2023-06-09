@@ -1,5 +1,20 @@
-<div class="product__ga" *ngFor="let product of products">
-    <img src="assets/images/product/{{product.id}}/{{product.images.list_images[0].url}}" alt="" width="200">
-    <strong>{{ product.name }}</strong>
-    <a routerLink="{{ product.id }}">Ver Producto</a>
+<div class="catalog">
+    <div class="catalog__product" *ngFor="let product of products">
+        <a routerLink="{{product.id}}">
+            <div class="catalog__product__image">
+                <img src="assets/images/product/{{product.id}}/{{product.images.list_images[0].url}}" alt="" width="200">
+            </div>
+            <div class="catalog__product__discoint">
+                {{product.discount}}%
+            </div>
+            <div class="catalog__product__name">
+                {{ product.name }}
+            </div>
+            <div class="catalog__product__price">
+                <div class="with_discount" *ngIf="product.discount >0">S/{{ product.price.toFixed(2) }}</div>
+                S/{{ (product.price - (product.price * product.discount / 100)).toFixed(2) }}
+            </div>
+        </a>
+    </div>
+
 </div>
