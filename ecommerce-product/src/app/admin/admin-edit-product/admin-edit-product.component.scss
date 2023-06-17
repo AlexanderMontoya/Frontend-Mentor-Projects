@@ -1,0 +1,110 @@
+@import './../../../utils/mixins';
+.section{
+    width: 80%;
+    margin: auto;
+    &__header{
+        padding: 30px 0px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &__title{
+            font-size: 30px;
+        }
+    }
+    .container{
+        width: 100%;
+        .form{
+            width: 100%;
+            display: grid;
+            gap: 10px;
+            &__input{
+                width: 100%;
+                label{
+                    margin-bottom: 5px;
+                }
+                input{
+                    width: 100%;
+                    @include input();
+                    border: 1px solid var(--color-paragraph);
+                }
+                textarea{
+                    width: 100%;
+                    min-height: 100px;
+                    @include input();
+                    border: 1px solid var(--color-paragraph);
+                }
+
+                &__file{
+                    display: none;
+                }
+            }
+            &__input.images{
+                width: 338px;
+                border: 1px solid var(--color-paragraph);
+                .title{
+                    width: 100%;
+                    padding: 20px;
+                    border-bottom: 1px solid var(--color-paragraph);
+                }
+                .image{
+                    width: 100%;
+                    @include centrar();
+                    img{
+                        width: 200px;
+                        height: 200px;
+                        margin: 5px 0px
+                    }
+                }
+                .gallery{
+                    width: calc(100% - 40px);
+                    height: 95px;
+                    overflow-x: auto;
+                    overflow-y: hidden;
+                    padding: 5px 0px;
+                    margin: auto;
+                    display: flex;
+                    gap: 6px;
+                    .gallery__image{
+                        min-width: 70px;
+                        height: 70px;
+                        border-radius: 5px;
+                        border: 1px solid var(--color-paragraph);
+                        overflow: hidden;
+                        img{
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                    &::-webkit-scrollbar{
+                        height: 6px;
+                    }
+                    
+                    &::-webkit-scrollbar-thumb{
+                        background: var(--color-paragraph);
+                        border-radius: 5px;
+                    }
+                }
+                label{
+                    display: block;
+                    padding: 10px 20px;
+                    color: var(--color-orange);
+                    text-decoration: underline;
+                }
+                @media only screen and (max-width:420px) {
+                    width: 300px;
+                }
+                @media only screen and (max-width:375px) {
+                    width: 256px;
+                }
+            }
+            .btn{
+                @include btn();
+                width: 100%;
+                padding: 10px 0px;
+                border-radius: 5px;
+                color: white;
+                background-color: var(--color-orange);
+            }
+        }
+    }
+}

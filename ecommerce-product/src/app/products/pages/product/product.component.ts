@@ -22,10 +22,7 @@ export class ProductComponent {
     price: 0,
     discount: 0,
     stock: 0,
-    images: {
-      list_images:[],
-      thumbnails: []
-    }
+    images: []
   }
 
   constructor(private activRoute : ActivatedRoute,
@@ -36,6 +33,25 @@ export class ProductComponent {
   }
 
   ngOnInit(){
+    if(this.productsService.products.length==0){
+      this.productsService.chargeProducts().subscribe(
+        myProducts=>{
+          if(myProducts){
+            this.productsService.products = Object.values(myProducts);
+
+            this.searchProduct();
+
+          }else{
+            
+          }
+        }
+      )
+    }else{
+      this.searchProduct();
+    }
+  }
+
+  searchProduct(){
     this.activRoute.params.subscribe(params=>{
       this.name_product=params['name_product'];
       this.productsService.product = [];
@@ -43,6 +59,7 @@ export class ProductComponent {
       if(this.productsService.product.length>0){
         /*Verifica que hay elementos */
         this.product = this.productsService.product[0];
+        this.product.price = this.product.price * 1; 
       }else{
         /*Redirecciona */
         this.router.navigate(['/productos']);

@@ -1,17 +1,17 @@
-<div class="catalog">
+<div class="catalog" *ngIf="products.length>0">
     <div class="catalog__product" *ngFor="let product of products">
         <a routerLink="{{product.id}}">
             <div class="catalog__product__image">
-                <img src="assets/images/product/{{product.id}}/{{product.images.list_images[0].url}}" alt="" width="200">
+                <img src="https://firebasestorage.googleapis.com/v0/b/prueba-tienda-42155.appspot.com/o/productos%2F{{product.images[0].url}}?alt=media" alt="" >
             </div>
-            <div class="catalog__product__discoint">
+            <div class="catalog__product__discoint" *ngIf="product.discount >0">
                 {{product.discount}}%
             </div>
             <div class="catalog__product__name">
                 {{ product.name }}
             </div>
             <div class="catalog__product__price">
-                <div class="with_discount" *ngIf="product.discount >0">S/{{ product.price.toFixed(2) }}</div>
+                <div class="with_discount" *ngIf="product.discount >0">S/{{ (product.price*1).toFixed(2) }}</div>
                 S/{{ (product.price - (product.price * product.discount / 100)).toFixed(2) }}
             </div>
         </a>

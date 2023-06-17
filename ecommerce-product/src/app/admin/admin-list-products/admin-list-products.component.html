@@ -1,0 +1,42 @@
+<div class="section">
+    <div class="section__header">
+        <p class="section__header__title">Products</p>
+        <a routerLink="add" class="btn__new">Nuevo Producto</a>
+    </div>
+    <div class="section__content" *ngIf="products.length>0">
+        <table class="table">
+            <tr>
+                <th>#</th>
+
+                <th>Producto</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr class="item" *ngFor="let product of products; let i=index">
+                <td>{{ i+1 }}</td>
+                <td>
+                    <div class="item__name">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/prueba-tienda-42155.appspot.com/o/productos%2F{{product.images[0].url}}?alt=media" alt="" class="img" width="50">
+                        <div class="name">{{product.name}}</div>
+                    </div>
+                </td>
+                <td class="item__price">
+                    <div class="with_discount" *ngIf="product.discount >0">S/{{ (product.price * 1).toFixed(2) }}</div>
+                        S/{{ (product.price - (product.price * product.discount / 100)).toFixed(2) }}
+                </td>
+                <td>
+                    <div class="item__controls">
+                        <a routerLink="{{product.id}}/edit" class="btn btn--green">Editar</a>
+                        <button class="btn btn--red" (click)="eliminar(i)">Eliminar</button>    
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="section__message">
+        <div class="charge" *ngIf="message=='' && products.length==0 " ></div>
+        <div class="message">
+            {{ message }}
+        </div>
+    </div>
+</div>

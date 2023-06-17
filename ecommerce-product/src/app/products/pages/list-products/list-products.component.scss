@@ -1,6 +1,6 @@
 @import './../../../../utils/mixins';
 .catalog{
-    width: 90%;
+    width: 80%;
     margin: auto;
     padding: 50px 0px;
     display: flex;
@@ -9,10 +9,11 @@
         width: 230px;
         position: relative;
         border-bottom: 2px solid var(--color-price-desc);
-        padding-bottom: 20px;
         a{
+            display: inline-block;
             text-decoration: none;
             color: var(--color-paragraph);
+            padding-bottom: 20px;
         }
         &__image{
             width: 100%;
@@ -33,11 +34,12 @@
             right: 0px;
         }
         &__name{
-            padding: 20px 0px;
+            padding: 20px 5px;
         }
         &__price{
             color: var(--color-orange);
             font-weight: 700;
+            padding: 0px 5px;
             .with_discount{
                 font-size: 11px;
                 font-weight: 400;

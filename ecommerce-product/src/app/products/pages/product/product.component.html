@@ -1,8 +1,8 @@
 <div class="content">
-    <app-images-product></app-images-product>
-
+    <app-images-product *ngIf="product.images.length>0"></app-images-product>
+    
     <div class="content__product">
-        <div class="product">
+        <div class="product" *ngIf="product.id!=''">
             <span class="product__company">
                 SNEAKER COMPANY
             </span>
@@ -35,6 +35,5 @@
                 </button>
             </form>
         </div>
-        
     </div>
 </div>

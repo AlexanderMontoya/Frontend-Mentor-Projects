@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CartService } from './cart.service';
 import { Product,Image,Thumbnail } from './Product';
@@ -8,15 +9,14 @@ import { Product,Image,Thumbnail } from './Product';
 export class ProductsService {
   /*Data */
   products:Product[]=[
-    {
+    /* {
       id: 'fall-limited-edition-sneakers',
       name: 'Fall Limited Edition Sneakers',
       description:`These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.`,
       price: 250,
       discount: 20,
       stock: 5,
-      images: {
-        list_images:[
+      images: [
           {
             id: 0,
             url: 'image-product-1.jpg',
@@ -33,30 +33,7 @@ export class ProductsService {
             id: 3,
             url: 'image-product-4.jpg',
           }
-        ],
-        thumbnails: [
-          {
-            id: 0,
-            url: 'image-product-1.jpg',
-            select: true
-          },
-          {
-            id: 1,
-            url: 'image-product-2.jpg',
-            select: false
-          },
-          {
-            id: 2,
-            url: 'image-product-3.jpg',
-            select: false
-          },
-          {
-            id: 3,
-            url: 'image-product-4.jpg',
-            select: false
-          }
-        ]
-      }
+      ]
     },
     {
       id: 'nike-pegasus-40-premium',
@@ -65,8 +42,7 @@ export class ProductsService {
       price: 649.90,
       discount: 20,
       stock: 7,
-      images: {
-        list_images:[
+      images: [
           {
             id: 0,
             url: 'image_1.jpg',
@@ -83,36 +59,13 @@ export class ProductsService {
             id: 3,
             url: 'image_4.jpg',
           }
-        ],
-        thumbnails: [
-          {
-            id: 0,
-            url: 'image_1.jpg',
-            select: true
-          },
-          {
-            id: 1,
-            url: 'image_2.jpg',
-            select: false
-          },
-          {
-            id: 2,
-            url: 'image_3.jpg',
-            select: false
-          },
-          {
-            id: 3,
-            url: 'image_4.jpg',
-            select: false
-          }
-        ]
-      }
-    }
+      ]
+    } */
   ]
   
   product:Product[]=[];
 
-  constructor(cartService:CartService) { }
+  constructor(private httpClient:HttpClient, public cartService:CartService) { }
 
   consultProduct( id:string ){
     const producto = this.products.find(element=>element.id === id);
@@ -121,6 +74,34 @@ export class ProductsService {
     } else {
       // Manejar el caso en el que el producto no existe
     }
+  }
+
+  chargeProducts(){
+    return this.httpClient.get('https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos.json');
+  }
+
+  addProduct( product : Product ){
+    this.products.push(product);
+    this.httpClient.put('https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos.json', this.products).subscribe(
+      response=>console.log("Se ha guardado el producto"),
+      error=>console.log("Error: "+error),
+    );
+  }
+
+  updateLibro( indice:number, product:Product){
+    let url= 'https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos/'+indice+'.json';
+    this.httpClient.put(url, product).subscribe(
+      response=>console.log("Se actualizo el producto"),
+      error=>console.log("Error: "+error),
+    );
+  }
+
+  deleteProduct(indice:number){
+    let url= 'https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos/'+indice+'.json';
+    this.httpClient.delete(url).subscribe(
+      response=>console.log("Se elimino correctamente el producto: " + response),
+      error=>console.log("Error: "+error),
+    );
   }
   
 }

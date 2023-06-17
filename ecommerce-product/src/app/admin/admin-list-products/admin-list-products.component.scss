@@ -1,0 +1,101 @@
+@import './../../../utils/mixins';
+.section{
+    width: 80%;
+    margin: auto;
+    &__header{
+        padding: 30px 0px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &__title{
+            font-size: 30px;
+        }
+        .btn__new{
+            display: inline-block;
+            text-decoration: none;
+            border-radius: 5px;
+            padding: 10px 10px;
+            color: white;
+            background-color: rgb(66, 66, 235);
+        }
+    }
+    &__content{
+        .table{
+            width: 100%;
+            border-collapse: collapse;
+            tr{
+                td{
+                    padding: 0px 10px;
+                }
+                th{
+                    padding: 10px;
+                    text-align: left;
+                }
+            }
+            tr:nth-child(odd) {
+                background-color: #f2f2f2;
+            }
+            tr:hover {
+                background-color: #e6e6e6;
+            }           
+            .item{
+                &__name{
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+                &__price{
+                    width: 100px;
+                    .with_discount{
+                        font-size: 12px;
+                        color: var(--color-paragraph);
+                        text-decoration: line-through;
+                    }
+                }
+                &__controls{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 5px;
+                    padding: 10px 0px;
+                    a{
+                        text-decoration: none;
+                        display: inline-block;
+                        text-align: center;
+                    }
+                    button{
+                        @include btn()
+                    }
+                    .btn{
+                        font-size: 12px;
+                        width: 100px;
+                        padding: 7px 0px;
+                        border-radius: 5px;
+                        color: white;
+                    }
+                    .btn--green{
+                        background-color: green;
+                    }
+                    .btn--red{
+                        background-color: red;
+                    }
+                }
+            }
+        }
+    }
+    &__message{
+        width: 100%;
+        padding: 50px 0px;
+        @include centrar();
+        .charge{
+            @include redondear(50px);
+            border: 5px solid var(--color-orange);
+            border-bottom: 5px solid transparent;
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); } /* inicio de la animación */
+            100% { transform: rotate(360deg); } /* fin de la animación */
+          }
+    }
+}

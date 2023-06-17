@@ -32,7 +32,7 @@ export class CartService {
       this.products.push({
         id: product.id,
         name: product.name,
-        image: product.images.list_images[0].url,
+        image: product.images[0].url,
         price: priceFinal,
         count: count,
         total: priceFinal * count

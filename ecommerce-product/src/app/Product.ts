@@ -5,11 +5,7 @@ export interface Product{
     price: number,
     discount: number,
     stock: number,
-    images: 
-    {
-        list_images: Image[],
-        thumbnails: Thumbnail[]
-    }
+    images: Image[]
   }
 
 export interface Image{

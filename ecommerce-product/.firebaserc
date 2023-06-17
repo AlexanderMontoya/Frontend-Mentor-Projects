@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "prueba-tienda-42155": {
+      "hosting": {
+        "ecommerce-product": [
+          "prueba-tienda-42155"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "prueba-tienda-42155"
+  }
+}

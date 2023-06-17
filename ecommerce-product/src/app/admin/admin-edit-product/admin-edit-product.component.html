@@ -1,0 +1,60 @@
+<div class="section">
+    <div class="section__header">
+        <p class="section__header__title">Update Product</p>
+    </div>
+    <div class="container">
+        <form (ngSubmit)="updateProduct()"  class="form">
+            <!-- <div class="form__input">
+                <label for="id_product">ID:</label><br>
+                <input type="text" name="id_product" id="id_product" [(ngModel)]="product.id">
+            </div> -->
+            <div class="form__input">
+                <label for="name">Name:</label><br>
+                <input type="text" name="name" id="name"  [(ngModel)]="product.name" (input)="createID($event)" placeholder="Name product">
+            </div>
+            <div class="form__input">
+                <label for="description">Description:</label><br>
+                <textarea type="text" name="description" id="description" placeholder="Description of product"  [(ngModel)]="product.description"></textarea>
+            </div>
+            <div class="form__input">
+                <label for="price">Price:</label><br>
+                <input type="text" name="price" id="price"  [(ngModel)]="product.price">
+            </div>
+            <div class="form__input">
+                <label for="discount">Discount:</label><br>
+                <input type="text" name="discount" id="discount"  [(ngModel)]="product.discount">
+            </div>
+            <div class="form__input">
+                <label for="stock">Stock:</label><br>
+                <input type="text" name="stock" id="stock"  [(ngModel)]="product.stock">
+            </div>
+            <!-- <div class="form__input images">
+                <div class="title">
+                    Imagen del producto
+                </div>
+                <div class="image">
+                    <img *ngIf="imagePrincipal" src="{{imagePrincipal}}" alt="" width="200">
+                </div>
+                <label for="file_image">
+                    {{objectImages[0]?'Remplazar imagen':'Establecer imagen del producto'}}
+                </label>
+                <input type="file" (change)="uploadImage($event)" class="form__input__file" id="file_image">
+            </div>
+            <div class="form__input images" *ngIf="objectImages[0]">
+                <div class="title">
+                    Galeria de imagenes
+                </div>
+                <div class="gallery">
+                    <div class="gallery__image" *ngFor="let image of galeriaImages">
+                        <img src="{{image}}" alt="" width="100">
+                    </div>
+                </div>
+                
+                <label for="gallery">Subir imagen</label>
+                <input type="file" (change)="uploadGalery($event)" class="form__input__file" id="gallery">
+                
+            </div> -->
+            <button type="submit" class="btn">Publicar</button>
+        </form>
+    </div>
+</div>

@@ -15,6 +15,20 @@ export class ListProductsComponent {
   }
 
   ngOnInit(){
-    this.products = this.productsService.products;
+    if(this.productsService.products.length==0){
+      this.productsService.chargeProducts().subscribe(
+        myProducts=>{
+          if(myProducts){
+            this.products=Object.values(myProducts);
+            this.productsService.products = this.products;
+          }else{
+            
+          }
+        }
+      )
+    }
+    else{
+      this.products=this.productsService.products;
+    }
   }
 }

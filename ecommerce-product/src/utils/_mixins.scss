@@ -5,6 +5,13 @@
     font-family: 'Kumbh Sans', sans-serif;
 }
 
+@mixin input(){
+    border: none;
+    outline: none;
+    padding: 10px 5px;
+    font-size: 14px;
+}
+
 @mixin centrar(){
     display: flex;
     justify-content: center;
