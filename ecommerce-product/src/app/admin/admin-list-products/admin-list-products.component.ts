@@ -38,7 +38,8 @@ export class AdminListProductsComponent {
   }
 
   eliminar(indice:number){
-    /* this.products.splice(indice, 1);
-    this.productsService.deleteProduct(indice); */
+    this.products.splice(indice, 1);
+    this.productsService.deleteProduct(indice);
+    this.productsService.addProduct(this.products);
   }
 }

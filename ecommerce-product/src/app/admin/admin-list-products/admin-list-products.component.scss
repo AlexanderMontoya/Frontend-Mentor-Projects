@@ -18,6 +18,10 @@
             color: white;
             background-color: rgb(66, 66, 235);
         }
+        @media only screen and (max-width:370px) {
+            flex-direction: column;
+            gap: 10px;
+        }
     }
     &__content{
         .table{
@@ -81,6 +85,13 @@
                     }
                 }
             }
+            @media only screen and (max-width:495px) {
+                width: 500px;
+            }
+        }
+        @media only screen and (max-width:495px) {
+            overflow: hidden;
+            overflow-x: auto;
         }
     }
     &__message{
@@ -97,5 +108,8 @@
             0% { transform: rotate(0deg); } /* inicio de la animación */
             100% { transform: rotate(360deg); } /* fin de la animación */
           }
+    }
+    @media only screen and (max-width:376px) {
+        width: 90%;
     }
 }

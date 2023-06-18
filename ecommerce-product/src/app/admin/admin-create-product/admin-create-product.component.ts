@@ -28,7 +28,8 @@ export class AdminCreateProductComponent {
   }
 
   addProduct(){
-    this.productService.addProduct( this.product );
+    this.productService.products.push(this.product);
+    this.productService.addProduct(this.productService.products);
     this.publicar();
   }
 

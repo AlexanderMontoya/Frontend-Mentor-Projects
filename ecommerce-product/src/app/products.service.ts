@@ -80,9 +80,8 @@ export class ProductsService {
     return this.httpClient.get('https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos.json');
   }
 
-  addProduct( product : Product ){
-    this.products.push(product);
-    this.httpClient.put('https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos.json', this.products).subscribe(
+  addProduct( products : Product[] ){
+    this.httpClient.put('https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos.json', products).subscribe(
       response=>console.log("Se ha guardado el producto"),
       error=>console.log("Error: "+error),
     );

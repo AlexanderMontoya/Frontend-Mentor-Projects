@@ -3,22 +3,31 @@
     width: 80%;
     margin: auto;
     padding: 50px 0px;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(230px,230px));
     gap: 20px;
     &__product{
         width: 230px;
+        height: 330px;
         position: relative;
         border-bottom: 2px solid var(--color-price-desc);
         a{
+            width: 100%;
+            height: 100%;
             display: inline-block;
             text-decoration: none;
             color: var(--color-paragraph);
-            padding-bottom: 20px;
         }
         &__image{
             width: 100%;
             img{
                 width: 100%;
+                height: 230px;
+            }
+            @media only screen and (max-width:660px) {
+                img{
+                    height: auto;
+                }   
             }
         }
         &__discoint{
@@ -34,7 +43,12 @@
             right: 0px;
         }
         &__name{
-            padding: 20px 5px;
+            height: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin: 10px 5px;
         }
         &__price{
             color: var(--color-orange);
@@ -47,5 +61,17 @@
                 text-decoration: line-through;
             }
         }
+        @media only screen and (max-width:600px) {
+            width: 100%;
+        }
+        @media only screen and (max-width:495px) {
+            height: 275px;
+        }
+    }
+    @media only screen and (max-width:600px) {
+        grid-template-columns: 1fr 1fr;
+    }
+    @media only screen and (max-width:495px) {
+        gap: 10px;
     }
 }
