@@ -10,8 +10,19 @@
     </nav>
     <div class="components">
         <app-cart></app-cart>
-        <div class="user__component">
-            <img src="assets/images/image-avatar.png" alt="">
+        <div class="user">
+
+            <div class="user__login" (click)="openLinks()" *ngIf="!estaLogueado()">
+                Iniciar Sesion
+            </div>
+            <div class="user__links" *ngIf="links">
+                <a routerLink="login" class="user__links__item" (click)="links=false" *ngIf="!estaLogueado()">Login</a>
+                <a class="user__links__item" (click)="logout()" *ngIf="estaLogueado()">Logout</a>
+            </div>
+            <div class="user__image" (click)="openLinks()" *ngIf="estaLogueado()">
+                <img src="assets/images/image-avatar.png" alt="">
+            </div>
+            
         </div>
     </div>
 </header>

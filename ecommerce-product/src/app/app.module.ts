@@ -10,6 +10,12 @@ import { LoginComponent } from './login/login.component';
 
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from './environments/environment';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+
+/*Esto es prueba nomas */
+import { FormsModule } from '@angular/forms';
+
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -22,8 +28,10 @@ import { environment } from './environments/environment';
     NavbarModule,
     HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(()=>getAuth()),
+    FormsModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

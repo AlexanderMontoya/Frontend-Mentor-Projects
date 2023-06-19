@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CartService } from './cart.service';
 import { Product,Image,Thumbnail } from './Product';
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -65,7 +66,10 @@ export class ProductsService {
   
   product:Product[]=[];
 
-  constructor(private httpClient:HttpClient, public cartService:CartService) { }
+  constructor(
+    private httpClient:HttpClient, 
+    public cartService:CartService,
+    public loginService:LoginService) { }
 
   consultProduct( id:string ){
     const producto = this.products.find(element=>element.id === id);
@@ -77,18 +81,21 @@ export class ProductsService {
   }
 
   chargeProducts(){
-    return this.httpClient.get('https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos.json');
+    const token= this.loginService.getIdToken();
+    return this.httpClient.get('https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos.json?auth='+token);
   }
 
   addProduct( products : Product[] ){
-    this.httpClient.put('https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos.json', products).subscribe(
+    const token= this.loginService.getIdToken();
+    this.httpClient.put('https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos.json?auth='+token, products).subscribe(
       response=>console.log("Se ha guardado el producto"),
       error=>console.log("Error: "+error),
     );
   }
 
   updateLibro( indice:number, product:Product){
-    let url= 'https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos/'+indice+'.json';
+    const token= this.loginService.getIdToken();
+    let url= 'https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos/'+indice+'.json?auth='+token;
     this.httpClient.put(url, product).subscribe(
       response=>console.log("Se actualizo el producto"),
       error=>console.log("Error: "+error),
@@ -96,7 +103,8 @@ export class ProductsService {
   }
 
   deleteProduct(indice:number){
-    let url= 'https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos/'+indice+'.json';
+    const token= this.loginService.getIdToken();
+    let url= 'https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos/'+indice+'.json?auth='+token;
     this.httpClient.delete(url).subscribe(
       response=>console.log("Se elimino correctamente el producto: " + response),
       error=>console.log("Error: "+error),

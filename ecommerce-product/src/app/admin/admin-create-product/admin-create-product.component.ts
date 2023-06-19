@@ -23,13 +23,26 @@ export class AdminCreateProductComponent {
   objectImages:File[]=[];
   imagePrincipal:string='';
   galeriaImages:string[]=[];
-  constructor (public productService:ProductsService, public storageService:StorageService){
+  constructor (public productsService:ProductsService, public storageService:StorageService){
     
   }
 
+  ngOnInit(){
+    if(this.productsService.products.length==0){
+      this.productsService.chargeProducts().subscribe(
+        myProducts=>{
+          console.log(myProducts);
+          if(myProducts ){
+            this.productsService.products = Object.values(myProducts);
+          }
+        }
+      )
+    }
+  }
+
   addProduct(){
-    this.productService.products.push(this.product);
-    this.productService.addProduct(this.productService.products);
+    this.productsService.products.push(this.product);
+    this.productsService.addProduct(this.productsService.products);
     this.publicar();
   }
 
