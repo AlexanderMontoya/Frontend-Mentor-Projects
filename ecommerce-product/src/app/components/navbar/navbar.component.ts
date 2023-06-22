@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoginService } from 'src/app/login.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,21 +9,30 @@ import { LoginService } from 'src/app/login.service';
 export class NavbarComponent {
   navbar:boolean=false;
   links:boolean=false;
-  constructor(public loginService:LoginService){}
+  constructor(public userService:UserService){}
   open(){
     this.navbar = true;
   }
 
   estaLogueado(){
-    return this.loginService.estaLogueado();
+    return this.userService.estaLogueado();
   }
 
   openLinks(){
-    this.links = true;
+    if(this.links){
+      this.links = false;
+    }else{
+      this.links = true;
+    }
   }
 
   logout(){
-    this.loginService.logout();
+    this.userService.logout();
+  }
+
+  goLogin(){
+    this.links=false;
+    this.userService.windows.login=true;
   }
 
 }

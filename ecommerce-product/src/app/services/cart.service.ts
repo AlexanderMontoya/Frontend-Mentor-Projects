@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from './Product';
+import { Product } from './../Product';
 
 interface ProductCart{
   id:string,
@@ -15,7 +15,7 @@ interface ProductCart{
 })
 export class CartService {
   products:ProductCart[]=[];
-  countCart:number = 0;
+  items:number = 0;
 
   constructor() { }
 
@@ -26,7 +26,7 @@ export class CartService {
       if(objectToUpdate.count + count <= product.stock){
         objectToUpdate.count += count ;
         objectToUpdate.total = objectToUpdate.count * objectToUpdate.price;
-        this.countCart += count;
+        this.items += count;
       }
     }else{
       this.products.push({
@@ -37,10 +37,12 @@ export class CartService {
         count: count,
         total: priceFinal * count
       });
-      this.countCart += count;
+      this.items += count;
     }
   }
   removeFromCart(id:number){
+
+    this.items -= this.products[id].count;
     this.products.splice(id, 1);
   }
 }

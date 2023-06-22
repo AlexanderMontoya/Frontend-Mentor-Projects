@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { FirebaseApp } from '@angular/fire/app';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,7 @@ import { FirebaseApp } from '@angular/fire/app';
 })
 export class AppComponent {
   title = 'ecommerce-product';
+
+  constructor(public userService:UserService){}
+
 }

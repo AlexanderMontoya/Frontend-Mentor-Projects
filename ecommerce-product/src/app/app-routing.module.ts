@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ProductsModule } from './products/products.module';
 import { AdminModule } from './admin/admin.module';
-import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -13,10 +12,6 @@ const routes: Routes = [
   {
     path:'admin',
     loadChildren: ()=> import('./admin/admin.module').then(m=>AdminModule)
-  },
-  {
-    path:'login',
-    component: LoginComponent
   },
   {
     path:'**',

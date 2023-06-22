@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CartService } from './cart.service';
 import { Product,Image,Thumbnail } from './Product';
-import { LoginService } from './login.service';
+import { UserService } from './services/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -67,9 +66,8 @@ export class ProductsService {
   product:Product[]=[];
 
   constructor(
-    private httpClient:HttpClient, 
-    public cartService:CartService,
-    public loginService:LoginService) { }
+    private httpClient:HttpClient,
+    public userService:UserService) { }
 
   consultProduct( id:string ){
     const producto = this.products.find(element=>element.id === id);
@@ -81,12 +79,11 @@ export class ProductsService {
   }
 
   chargeProducts(){
-    const token= this.loginService.getIdToken();
-    return this.httpClient.get('https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos.json?auth='+token);
+    return this.httpClient.get('https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos.json');
   }
 
   addProduct( products : Product[] ){
-    const token= this.loginService.getIdToken();
+    const token= this.userService.getIdToken();
     this.httpClient.put('https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos.json?auth='+token, products).subscribe(
       response=>console.log("Se ha guardado el producto"),
       error=>console.log("Error: "+error),
@@ -94,7 +91,7 @@ export class ProductsService {
   }
 
   updateLibro( indice:number, product:Product){
-    const token= this.loginService.getIdToken();
+    const token= this.userService.getIdToken();
     let url= 'https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos/'+indice+'.json?auth='+token;
     this.httpClient.put(url, product).subscribe(
       response=>console.log("Se actualizo el producto"),
@@ -103,7 +100,7 @@ export class ProductsService {
   }
 
   deleteProduct(indice:number){
-    const token= this.loginService.getIdToken();
+    const token= this.userService.getIdToken();
     let url= 'https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos/'+indice+'.json?auth='+token;
     this.httpClient.delete(url).subscribe(
       response=>console.log("Se elimino correctamente el producto: " + response),

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CartService } from 'src/app/cart.service';
+import { CartService } from 'src/app/services/cart.service';
 import { Product } from 'src/app/Product';
 
 interface ProductCart{
@@ -21,14 +21,12 @@ export class CartComponent {
   productsCart:ProductCart[]=[];
 
   open:boolean = false;
-  countCart:number = 0;
   constructor(public cartService:CartService){
     
   }
 
   ngOnInit(){
       this.productsCart = this.cartService.products;
-      this.countCart = this.cartService.countCart;
   }
 
   contentOpen(){

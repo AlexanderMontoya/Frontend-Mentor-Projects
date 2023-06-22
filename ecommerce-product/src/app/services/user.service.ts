@@ -7,16 +7,39 @@ import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signO
 
 import { CookieService } from 'ngx-cookie-service';
 
+import { HttpClient } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class UserService {
 
-  constructor(private router:Router, private auth:Auth, private cookies:CookieService) { }
+  constructor(private router:Router, 
+              private auth:Auth, 
+              private cookies:CookieService, 
+              private httpClient:HttpClient) { }
+
   token:string='';
 
+  windows={
+    login: true,
+    register: false
+  }
+
   register(email:string , password:string){
-    return createUserWithEmailAndPassword(this.auth, email, password);
+    createUserWithEmailAndPassword(this.auth, email, password)
+    .then(response=>{
+      console.log(response);
+      const user={
+        email: email,
+        role: 'normal'
+      }
+      this.httpClient.put('https://prueba-tienda-42155-default-rtdb.firebaseio.com/users/'+response.user.uid+'.json', user).subscribe(
+        response=>console.log("Se creo el usuario correctamente"),
+        error=>console.log("Error: "+error),
+      );
+    })
+    .catch(error=>console.log(error));
   }
 
   login(email:string , password:string){

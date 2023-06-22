@@ -10,12 +10,14 @@
 
 :root {
     --color-orange: #{$color-orange};
+    --color-orange-hover: #{$color-orange_hover};
     --color-bg-price: #{$color-bg-price};
     --color-dark-blue: #{color-dark-blue};
     --color-paragraph: #{$color-paragraph};
     --color-links: #{$color-links};
     --color-price-desc: #{$color-price-desc};
     --color-bg-select: #{$color-bg-select};
+    
   }
 
 body{
