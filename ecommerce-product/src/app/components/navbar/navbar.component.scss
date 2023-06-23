@@ -28,6 +28,9 @@
         @media only screen and (max-width:880px) {
             gap: 20px;
         }
+        @media only screen and (max-width:425px) {
+            gap: 10px;
+        }
     }
 
     .components{
@@ -37,13 +40,10 @@
         .user{
             position: relative;
             &__login{
-                height: 50px;
-                padding: 5px 0px;
-                background-color: var(--color-orange);
-                border-radius: 10px;
-                text-align: center;
-                color: white;
+                @include redondear(40px);
+                overflow: hidden;
                 cursor:pointer;
+                background-color: var(--color-orange);
             }
             &__links{
                 width: 120px;
@@ -65,7 +65,9 @@
                 }
             }
             &__image{
+                cursor: pointer;
                 @include redondear(50px);
+                overflow: hidden;
                 border: 2px solid var(--color-orange);
                 img{
                     width: 100%;

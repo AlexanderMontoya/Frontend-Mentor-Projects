@@ -13,7 +13,7 @@ import { environment } from './environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 
 /*Esto es prueba nomas */
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CookieService } from 'ngx-cookie-service';
 import { RegisterComponent } from './components/register/register.component';
@@ -29,6 +29,7 @@ import { RegisterComponent } from './components/register/register.component';
     AppRoutingModule,
     NavbarModule,
     HttpClientModule,
+    ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(()=>getAuth()),
     FormsModule

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -8,15 +9,34 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  user={
+  /* user={
     email:'montis123@gmail.com',
     password:'montisman123'
+  } */
+
+  constructor(public userService:UserService,
+               private router:Router,
+               private formBuilder:FormBuilder){}
+
+  get password(){
+    return this.user.get('password') as FormControl;
   }
 
-  constructor(public userService:UserService, private router:Router){}
+  get email(){
+    return this.user.get('email') as FormControl;
+  }
+
+  user= this.formBuilder.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['',Validators.required]
+  })
+               
 
   register(){
-    this.userService.register(this.user.email,this.user.password);
+    this.userService.register(
+      this.user.value.email+'',
+      this.user.value.password+''
+    );
   }
 
   cerrar(){

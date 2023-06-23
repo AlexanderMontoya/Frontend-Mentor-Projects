@@ -13,10 +13,10 @@
         <div class="user">
 
             <div class="user__login" (click)="openLinks()" *ngIf="!estaLogueado()">
-                Iniciar Sesion
+                <img src="assets/images/icon-user.svg" width="40">
             </div>
             <div class="user__image" (click)="openLinks()" *ngIf="estaLogueado()">
-                <img src="assets/images/image-avatar.png" alt="">
+                <img src="assets/images/image-avatar.png" alt="" width="50">
             </div>
             <div class="user__links" *ngIf="links">
                 <a class="user__links__item" (click)="goLogin()" *ngIf="!estaLogueado()">Login</a>
