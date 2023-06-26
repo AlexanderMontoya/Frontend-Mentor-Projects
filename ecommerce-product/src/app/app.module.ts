@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { environment } from './environments/environment';
+import { environment } from './environments/environment.prod';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 
 /*Esto es prueba nomas */

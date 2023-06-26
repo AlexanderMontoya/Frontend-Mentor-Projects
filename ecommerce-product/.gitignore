@@ -47,13 +47,9 @@ Thumbs.db
 .runtimeconfig.json
 
 #Environment
-/src/environments/environment.prod.ts
-# Firebase configuration file
-/src/environments/environment.ts
-
+/src/app/environments/environment.prod.ts
 
 #Firebase database rules
-
 database.rules.json
 
 n

@@ -5,7 +5,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { FormsModule } from '@angular/forms';
 
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
+import { environment } from '../environments/environment.prod';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 
 import { AdminListProductsComponent } from './admin-list-products/admin-list-products.component';
