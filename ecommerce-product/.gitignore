@@ -45,3 +45,15 @@ Thumbs.db
 .firebase
 *-debug.log
 .runtimeconfig.json
+
+#Environment
+/src/environments/environment.prod.ts
+# Firebase configuration file
+/src/environments/environment.ts
+
+
+#Firebase database rules
+
+database.rules.json
+
+n

@@ -103,4 +103,5 @@ export class UserService {
     /* return this.token; */
     return this.cookies.get('token');
   }
+
 }

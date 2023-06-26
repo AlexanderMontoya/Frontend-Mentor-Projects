@@ -34,7 +34,6 @@ export class AdminListProductsComponent {
     }else{
       this.products = this.productsService.products;
     }
-    
   }
 
   eliminar(indice:number){
