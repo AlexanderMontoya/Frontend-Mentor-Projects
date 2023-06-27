@@ -1,6 +1,6 @@
 <div class="content__images">
     <div class="image">
-        <img src="https://firebasestorage.googleapis.com/v0/b/prueba-tienda-42155.appspot.com/o/productos%2F{{image}}?alt=media" alt="" width="200" class="img img--general">
+        <img src="https://firebasestorage.googleapis.com/v0/b/ecommerce-product-233.appspot.com/o/productos%2F{{image}}?alt=media" alt="" width="200" class="img img--general">
         <div class="image__navegation">
             <button (click)="previous()" class="btn"><img src="assets/images/icon-previous.svg" alt=""></button>
             <button (click)="next()" class="btn"><img src="assets/images/icon-next.svg" alt=""></button>
@@ -8,7 +8,7 @@
     </div>
     <div class="list__images">
         <div class="list__item" *ngFor="let data of thumbnails" [class.select]="data.select"  (click)="cambiar(data.id)">
-            <img src="https://firebasestorage.googleapis.com/v0/b/prueba-tienda-42155.appspot.com/o/productos%2F{{data.url}}?alt=media" class="img" alt="" width="100">
+            <img src="https://firebasestorage.googleapis.com/v0/b/ecommerce-product-233.appspot.com/o/productos%2F{{data.url}}?alt=media" class="img" alt="" width="100">
         </div>
     </div>
 </div>

@@ -10,8 +10,8 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginComponent {
 
   user={
-    email:'montis123@gmail.com',
-    password:'montisman123'
+    email:'',
+    password:''
   }
 
   constructor(public userService:UserService, private router:Router){}

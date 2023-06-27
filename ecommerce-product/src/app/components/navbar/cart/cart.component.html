@@ -11,7 +11,7 @@
         </div>
         <div class="cart__products" *ngIf="productsCart.length>0">
             <div class="cartItem" *ngFor="let productCart of productsCart; let i = index">
-                <img src="https://firebasestorage.googleapis.com/v0/b/prueba-tienda-42155.appspot.com/o/productos%2F{{productCart.image}}?alt=media" alt="" class="cartItem__image" width="60">
+                <img src="https://firebasestorage.googleapis.com/v0/b/ecommerce-product-233.appspot.com/o/productos%2F{{productCart.image}}?alt=media" alt="" class="cartItem__image" width="60">
                 <span class="cartItem__description">{{ productCart.name }} ${{ productCart.price.toFixed(2) }} x {{ productCart.count }} <strong>
                     ${{ productCart.total.toFixed(2) }}
                 </strong></span>
@@ -19,7 +19,7 @@
                     <img src="assets/images/icon-delete.svg" alt="">
                 </button>
             </div>
-            <button class="btn__chekout">Checkout</button>
+            <button class="btn__chekout" (click)="irCheckout()">Checkout</button>
         </div>
         <div class="cart__message" *ngIf="productsCart.length == 0">
             <strong>

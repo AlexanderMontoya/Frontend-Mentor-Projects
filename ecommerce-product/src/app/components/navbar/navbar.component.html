@@ -20,6 +20,7 @@
             </div>
             <div class="user__links" *ngIf="links">
                 <a class="user__links__item" (click)="goLogin()" *ngIf="!estaLogueado()">Login</a>
+                <a class="user__links__item" (click)="goRegister()" *ngIf="!estaLogueado()">Register</a>
                 <a class="user__links__item" (click)="logout()" *ngIf="estaLogueado()">Logout</a>
             </div>
         </div>

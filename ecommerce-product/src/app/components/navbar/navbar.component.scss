@@ -46,8 +46,10 @@
                 background-color: var(--color-orange);
             }
             &__links{
-                width: 120px;
+                width: 170px;
                 position: absolute;
+                z-index: 9
+                ;
                 top: 60px;
                 right: 0px;
                 background-color: white;

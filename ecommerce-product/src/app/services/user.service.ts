@@ -34,14 +34,14 @@ export class UserService {
   register(email:string , password:string){
     createUserWithEmailAndPassword(this.auth, email, password)
     .then(response=>{
-      console.log(response);
+      /* console.log(response); */
       const user={
         email: email,
         role: 'normal'
       }
-      this.httpClient.put('https://prueba-tienda-42155-default-rtdb.firebaseio.com/users/'+response.user.uid+'.json', user).subscribe(
+      this.httpClient.put('https://ecommerce-product-233-default-rtdb.firebaseio.com/users/'+response.user.uid+'.json', user).subscribe(
         response=>{
-          console.log("Se creo el usuario correctamente");
+          /* console.log("Se creo el usuario correctamente"); */
           this.windows.register=false;
           this.windows.login=true;
         },
@@ -54,7 +54,7 @@ export class UserService {
   login(email:string , password:string){
     signInWithEmailAndPassword(this.auth,email, password)
     .then(response=>{
-      console.log(response);
+      /* console.log(response); */
       getIdToken(response.user).then(
         token=>{
           this.token=token;

@@ -79,12 +79,12 @@ export class ProductsService {
   }
 
   chargeProducts(){
-    return this.httpClient.get('https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos.json');
+    return this.httpClient.get('https://ecommerce-product-233-default-rtdb.firebaseio.com/productos.json');
   }
 
   addProduct( products : Product[] ){
     const token= this.userService.getIdToken();
-    this.httpClient.put('https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos.json?auth='+token, products).subscribe(
+    this.httpClient.put('https://ecommerce-product-233-default-rtdb.firebaseio.com/productos.json?auth='+token, products).subscribe(
       response=>console.log("Se ha guardado el producto"),
       error=>console.log("Error: "+error),
     );
@@ -92,7 +92,7 @@ export class ProductsService {
 
   updateLibro( indice:number, product:Product){
     const token= this.userService.getIdToken();
-    let url= 'https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos/'+indice+'.json?auth='+token;
+    let url= 'https://ecommerce-product-233-default-rtdb.firebaseio.com/productos/'+indice+'.json?auth='+token;
     this.httpClient.put(url, product).subscribe(
       response=>console.log("Se actualizo el producto"),
       error=>console.log("Error: "+error),
@@ -101,7 +101,7 @@ export class ProductsService {
 
   deleteProduct(indice:number){
     const token= this.userService.getIdToken();
-    let url= 'https://prueba-tienda-42155-default-rtdb.firebaseio.com/productos/'+indice+'.json?auth='+token;
+    let url= 'https://ecommerce-product-233-default-rtdb.firebaseio.com/productos/'+indice+'.json?auth='+token;
     this.httpClient.delete(url).subscribe(
       response=>console.log("Se elimino correctamente el producto: " + response),
       error=>console.log("Error: "+error),

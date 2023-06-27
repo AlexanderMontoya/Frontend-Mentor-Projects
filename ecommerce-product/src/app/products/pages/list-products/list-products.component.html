@@ -2,7 +2,7 @@
     <div class="catalog__product" *ngFor="let product of products">
         <a routerLink="{{product.id}}">
             <div class="catalog__product__image">
-                <img src="https://firebasestorage.googleapis.com/v0/b/prueba-tienda-42155.appspot.com/o/productos%2F{{product.images[0].url}}?alt=media" alt="" >
+                <img src="https://firebasestorage.googleapis.com/v0/b/ecommerce-product-233.appspot.com/o/productos%2F{{product.images[0].url}}?alt=media" alt="" >
             </div>
             <div class="catalog__product__discoint" *ngIf="product.discount >0">
                 {{product.discount}}%

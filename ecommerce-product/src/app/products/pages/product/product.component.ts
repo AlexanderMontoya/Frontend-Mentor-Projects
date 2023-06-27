@@ -81,7 +81,7 @@ export class ProductComponent {
 
   addToCart(){
     if(this.count>0){
-      console.log("Se agrego al carrito, el producto: "+ this.product.name);
+      /* console.log("Se agrego al carrito, el producto: "+ this.product.name); */
       this.cartService.addToCart(this.product, this.count);
     }
   }

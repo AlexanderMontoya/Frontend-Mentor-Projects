@@ -1,14 +1,16 @@
 {
+  "projects": {
+    "default": "ecommerce-product-233",
+    "ecommerce-product": "ecommerce-product-233"
+  },
   "targets": {
-    "prueba-tienda-42155": {
+    "ecommerce-product-233": {
       "hosting": {
-        "ecommerce-product": [
-          "prueba-tienda-42155"
+        "ecommerce-product-233": [
+          "ecommerce-product-233"
         ]
       }
     }
   },
-  "projects": {
-    "default": "prueba-tienda-42155"
-  }
+  "etags": {}
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { Product } from 'src/app/Product';
+import { Router } from '@angular/router';
 
 interface ProductCart{
   id:string,
@@ -21,7 +22,7 @@ export class CartComponent {
   productsCart:ProductCart[]=[];
 
   open:boolean = false;
-  constructor(public cartService:CartService){
+  constructor(public cartService:CartService, public router:Router){
     
   }
 
@@ -39,5 +40,10 @@ export class CartComponent {
 
   removeFromCart(num:number){
     this.cartService.removeFromCart(num);
+  }
+
+  irCheckout(){
+    this.open=false;
+    this.router.navigate(['/checkout'])
   }
 }

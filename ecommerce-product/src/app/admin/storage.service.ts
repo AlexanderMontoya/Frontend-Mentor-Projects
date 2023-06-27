@@ -41,12 +41,11 @@ export class StorageService {
     });
   }
 
-  getImages(name:string){
+  /* getImages(name:string){
     const imagesRef= ref(this.storage,'productos');
     listAll(imagesRef)
       .then(async response=>{
         console.log(response);
-        /* this.images = []; */
         for (let item of response.items) {
           if(item.name==name){
             const url = await getDownloadURL(item);
@@ -55,5 +54,5 @@ export class StorageService {
         }
       })
       .catch(error=>console.log(error));
-  }
+  } */
 }

@@ -35,4 +35,9 @@ export class NavbarComponent {
     this.userService.windows.login=true;
   }
 
+  goRegister(){
+    this.links=false;
+    this.userService.windows.register=true;
+  }
+
 }
