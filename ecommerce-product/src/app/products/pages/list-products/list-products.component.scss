@@ -21,10 +21,12 @@
         &__image{
             width: 100%;
             height: 230px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             overflow: hidden;
             img{
                 width: 100%;
-                height: 100%;
                 transition: transform 1s;
                 &:hover{
                     transform: scale(1.3);
